@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> a050b3d (Initial commit)
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    tools:context=".ui.SplashScreen">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
     tools:context=".ui.SplashScreen"
     android:id="@+id/splash_screen">
 
@@ -27,4 +18,3 @@
         android:src="@drawable/logo"/>
 
 </RelativeLayout>
->>>>>>> a050b3d (Initial commit)
