@@ -12,9 +12,6 @@
         android:theme="@style/Theme.Jkostandroid"
         tools:targetApi="31">
         <activity
-            android:name=".UbahPass"
-            android:exported="false" />
-        <activity
             android:name=".register"
             android:exported="false" />
         <activity
