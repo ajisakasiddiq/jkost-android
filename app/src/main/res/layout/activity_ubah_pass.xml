@@ -17,7 +17,6 @@
         android:layout_below="@id/textView1"
         android:layout_alignLeft="@id/textView1"
         android:layout_marginLeft="-2dp"
-        android:layout_marginTop=""
         android:hint="Masukkan Password"
         android:inputType="number"
         android:maxLength="10">
@@ -50,7 +49,6 @@
         android:layout_below="@id/textView2"
         android:layout_alignLeft="@id/textView2"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop=""
         android:hint="Masukkan Password"
         android:inputType="text"
         android:maxLength="20" />
@@ -72,14 +70,13 @@
         android:layout_below="@id/textView3"
         android:layout_alignLeft="@id/textView3"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop=""
         android:hint="Masukkan Password"
         android:inputType="text" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="395dp"
-        android:layout_height="408dp">
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
         <Button
             android:id="@+id/login_button"
             android:layout_width="209dp"
@@ -91,7 +88,6 @@
             app:cornerRadius="30dp"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="283dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-
-</RelativeLayout>>
+    </RelativeLayout>
