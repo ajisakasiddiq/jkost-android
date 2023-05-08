@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.jkost_android.R;
+
 public class UbahPass extends AppCompatActivity {
 
     @Override
