@@ -23,7 +23,7 @@
        android:paddingTop="15dp"
        android:elevation="10dp"
        android:gravity="center"
-       android:background="#FFFFFF"
+       android:background="#9CE0F5"
        android:layout_alignParentBottom="true"
        tools:targetApi="lollipop">
 
@@ -79,7 +79,7 @@
                android:layout_height="wrap_content"
                android:text="Search"
                android:textStyle="bold"
-               android:textColor="@color/home"
+               android:textColor="@color/white"
                android:layout_marginStart="10dp"
                android:textSize="16sp"/>
        </LinearLayout>
@@ -109,7 +109,7 @@
                android:layout_height="wrap_content"
                android:text="Account"
                android:textStyle="bold"
-               android:textColor="@color/home"
+               android:textColor="@color/white"
                android:layout_marginStart="10dp"
                android:textSize="16sp"/>
        </LinearLayout>

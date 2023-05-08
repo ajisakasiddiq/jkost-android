@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 //                    select home tab
                     searchTxt.setVisibility(View.VISIBLE);
                     searchImage.setImageResource(R.drawable.search);
-                    searchLayout.setBackgroundResource(R.drawable.round_back_search_100);
+                    searchLayout.setBackgroundResource(R.drawable.round_back_home_100);
 //                  create animation
                     ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,1.0f,Animation.RELATIVE_TO_SELF,0.0f);
                     scaleAnimation.setDuration(200);
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     homeImage.setImageResource(R.drawable.home);
-                    searchImage.setImageResource(R.drawable.baseline_notifications_24);
+                    searchImage.setImageResource(R.drawable.baseline_search_24);
 
 
                     homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
@@ -149,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
 //                    select home tab
                     accountTxt.setVisibility(View.VISIBLE);
-                    accountImage.setImageResource(R.drawable.search);
-                    accountLayout.setBackgroundResource(R.drawable.round_back_account_100);
+                    accountImage.setImageResource(R.drawable.baseline_manage_accounts_24);
+                    accountLayout.setBackgroundResource(R.drawable.round_back_home_100);
 //                  create animation
                     ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,1.0f,Animation.RELATIVE_TO_SELF,0.0f);
                     scaleAnimation.setDuration(200);
