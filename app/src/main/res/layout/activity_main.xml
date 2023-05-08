@@ -1,20 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/container"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:paddingTop="?attr/actionBarSize">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav"
-        app:menu="@menu/menu_bar"
-        app:itemTextColor="@drawable/shape2"
-        app:itemIconTint="@drawable/shape2"
-        android:background="@drawable/shape"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomBar"/>
+   <LinearLayout
+       android:id="@+id/bottomBar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:weightSum="4"
+       android:paddingStart="20dp"
+       android:paddingEnd="15dp"
+       android:paddingBottom="15dp"
+       android:paddingTop="15dp"
+       android:elevation="10dp"
+       android:gravity="center"
+       android:background="#FFFFFF"
+       android:layout_alignParentBottom="true"
+       tools:targetApi="lollipop">
+
+       <!--   home-->
+       <LinearLayout
+           android:id="@+id/homeLayout"
+           android:background="@drawable/round_back_home_100"
+           android:layout_width="wrap_content"
+           android:layout_height="50dp"
+           android:paddingStart="5dp"
+           android:paddingEnd="5dp"
+           android:gravity="center"
+           android:layout_weight="1">
+           <ImageView
+               android:id="@+id/homeImage"
+               android:layout_width="20dp"
+               android:layout_height="wrap_content"
+               android:adjustViewBounds="true"
+               android:src="@drawable/home"/>
+
+           <TextView
+               android:id="@+id/homeTxt"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Home"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:layout_marginStart="10dp"
+               android:textSize="16sp"/>
+       </LinearLayout>
+
+       <!--   search-->
+       <LinearLayout
+           android:id="@+id/searchLayout"
+           android:background="@android:color/transparent"
+           android:layout_width="wrap_content"
+           android:layout_height="50dp"
+           android:paddingStart="5dp"
+           android:paddingEnd="5dp"
+           android:gravity="center"
+           android:layout_weight="1">
+           <ImageView
+               android:id="@+id/searchImage"
+               android:layout_width="20dp"
+               android:layout_height="wrap_content"
+               android:adjustViewBounds="true"
+               android:src="@drawable/search"/>
+
+           <TextView
+               android:id="@+id/searchTxt"
+               android:visibility="gone"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Search"
+               android:textStyle="bold"
+               android:textColor="@color/home"
+               android:layout_marginStart="10dp"
+               android:textSize="16sp"/>
+       </LinearLayout>
+
+
+       <!--   Account-->
+       <LinearLayout
+           android:id="@+id/accountLayout"
+           android:background="@android:color/transparent"
+           android:layout_width="wrap_content"
+           android:layout_height="50dp"
+           android:paddingStart="5dp"
+           android:paddingEnd="5dp"
+           android:gravity="center"
+           android:layout_weight="1">
+           <ImageView
+               android:id="@+id/accountImage"
+               android:layout_width="20dp"
+               android:layout_height="wrap_content"
+               android:adjustViewBounds="true"
+               android:src="@drawable/baseline_manage_accounts_24"/>
+
+           <TextView
+               android:id="@+id/accountTxt"
+               android:visibility="gone"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Account"
+               android:textStyle="bold"
+               android:textColor="@color/home"
+               android:layout_marginStart="10dp"
+               android:textSize="16sp"/>
+       </LinearLayout>
+
+
+   </LinearLayout>
+
+
 
 
 </RelativeLayout>
