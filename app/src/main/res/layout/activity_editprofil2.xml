@@ -10,62 +10,57 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:id="@+id/TextView1"
         android:hint="Nama"
-        android:inputType="text"
-         />
+        android:inputType="text"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtUsername"
+        android:layout_height="60dp"
+        android:id="@+id/editUsername"
         android:hint="Username"
-        android:inputType="text"
-        />
+        android:inputType="text"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edttl"
-        k
-        android:hint="Tanggal Lahir"
-        />
+        android:layout_height="60dp"
+        android:id="@+id/edittl"
+        android:hint="Tanggal Lahir"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtjk"
+        android:layout_height="60dp"
+        android:id="@+id/editjk"
         android:hint="Jenis Kelamin"
         />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtNIK"
+        android:layout_height="60dp"
+        android:id="@+id/editNIK"
         android:hint="NIK"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtEmail"
-        android:hint="Email"
-        />
+        android:layout_height="60dp"
+        android:id="@+id/editEmail"
+        android:hint="Email"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:id="@+id/edtTelp"
         android:hint="No Telepon"/>
     <Button
         android:layout_width="209dp"
-        android:layout_height="55dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:backgroundTint="@color/home"
         android:text="Simpan"
         android:textColor="@color/black"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:cornerRadius="30dp"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="283dp" />
-    />
 
     <TextView
         android:layout_width="wrap_content"
