@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".editprofilActivity2">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView1"
+        android:hint="Nama"
+        android:inputType="text"
+         />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtUsername"
+        android:hint="Username"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edttl"
+        k
+        android:hint="Tanggal Lahir"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtjk"
+        android:hint="Jenis Kelamin"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtNIK"
+        android:hint="NIK"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtEmail"
+        android:hint="Email"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtTelp"
+        android:hint="No Telepon"/>
+    <Button
+        android:layout_width="209dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/home"
+        android:text="Simpan"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="30dp"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="283dp" />
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNamaDanUsername"/>
+
+</LinearLayout>
