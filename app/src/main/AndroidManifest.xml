@@ -33,9 +33,6 @@
         <activity
             android:name=".ui.auth.login"
             android:exported="false" />
-        <activity
-            android:name=".ui.SearchActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
