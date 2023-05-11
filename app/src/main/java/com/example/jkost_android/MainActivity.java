@@ -66,16 +66,16 @@ public class MainActivity extends AppCompatActivity {
 //        sethome
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .replace(R.id.fragmentContainer, HomeFragment.class,null)
+                .replace(R.id.fragmentContainer, HomeFragment.class, null)
                 .commit();
         homeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (selectedTab != 1){
+                if (selectedTab != 1) {
 //        sethome
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .replace(R.id.fragmentContainer,HomeFragment.class,null)
+                            .replace(R.id.fragmentContainer, HomeFragment.class, null)
                             .commit();
 //                    unselect
                     searchTxt.setVisibility(View.GONE);
@@ -91,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
                     homeImage.setImageResource(R.drawable.home);
                     homeLayout.setBackgroundResource(R.drawable.round_back_home_100);
 //                  create animation
-                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,0.0f,Animation.RELATIVE_TO_SELF,0.0f);
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     scaleAnimation.setDuration(200);
                     scaleAnimation.setFillAfter(true);
                     homeLayout.startAnimation(scaleAnimation);
 
-                    selectedTab =1;
+                    selectedTab = 1;
                 }
             }
         });
@@ -105,11 +105,11 @@ public class MainActivity extends AppCompatActivity {
         searchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (selectedTab != 2){
+                if (selectedTab != 2) {
 //        sethome
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .replace(R.id.fragmentContainer, SearchFragment.class,null)
+                            .replace(R.id.fragmentContainer, SearchFragment.class, null)
                             .commit();
 //                    unselect
                     homeTxt.setVisibility(View.GONE);
@@ -126,12 +126,12 @@ public class MainActivity extends AppCompatActivity {
                     searchImage.setImageResource(R.drawable.search);
                     searchLayout.setBackgroundResource(R.drawable.round_back_home_100);
 //                  create animation
-                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,1.0f,Animation.RELATIVE_TO_SELF,0.0f);
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     scaleAnimation.setDuration(200);
                     scaleAnimation.setFillAfter(true);
                     searchLayout.startAnimation(scaleAnimation);
 
-                    selectedTab =2;
+                    selectedTab = 2;
                 }
             }
         });
@@ -140,12 +140,12 @@ public class MainActivity extends AppCompatActivity {
         accountLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (selectedTab != 3){
+                if (selectedTab != 3) {
 
                     //        sethome
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .replace(R.id.fragmentContainer, AccountFragment.class,null)
+                            .replace(R.id.fragmentContainer, AccountFragment.class, null)
                             .commit();
 //                    unselect
                     homeTxt.setVisibility(View.GONE);
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                     accountImage.setImageResource(R.drawable.baseline_manage_accounts_24);
                     accountLayout.setBackgroundResource(R.drawable.round_back_home_100);
 //                  create animation
-                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,1.0f,Animation.RELATIVE_TO_SELF,0.0f);
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     scaleAnimation.setDuration(200);
                     scaleAnimation.setFillAfter(true);
                     accountLayout.startAnimation(scaleAnimation);
@@ -175,71 +175,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
 //
-//        Retrofit
-        TextInputEditText email, password;
-        Button btnlogin;
-
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        btnlogin = findViewById(R.id.btnlogin);
-
-        btnlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())){
-                    Toast.makeText(MainActivity.this,"Username / Password Required", Toast.LENGTH_LONG).show();
-                }else{
-                    //proceed to login
-                    login();
-                }
-
-//
-                public void login(){
-                    LoginRequest loginRequest = new LoginRequest();
-                    loginRequest.setEmail(email.getText().toString());
-                    loginRequest.setPassword(password.getText().toString());
-
-                    Call<LoginResponse> loginResponseCall = apiclient.getUserService().userLogin(loginRequest);
-                    loginResponseCall.enqueue(new Callback<LoginResponse>() {
-                        @Override
-                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-
-                            if(response.isSuccessful()){
-                                Toast.makeText(MainActivity.this,"Login Successful", Toast.LENGTH_LONG).show();
-                                LoginResponse loginResponse = response.body();
-
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        startActivity(new Intent(MainActivity.this,DashboardActivity.class).putExtra("data",loginResponse.getUsername()));
-                                    }
-                                },700);
-
-                            }else{
-                                Toast.makeText(MainActivity.this,"Login Failed", Toast.LENGTH_LONG).show();
-
-                            }
-
-                        }
-//
-                        public void onFailure(Call<LoginResponse> call, Throwable t) {
-                            Toast.makeText(MainActivity.this,"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-
-                        }
-                    });
-//
-
-            }
-        });
-
-
-
     }
 }

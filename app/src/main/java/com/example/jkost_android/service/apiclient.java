@@ -14,7 +14,7 @@ public class apiclient {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("http://api.irawen.net/")  //Change server URL
+                .baseUrl("http://127.0.0.1:8000/api/")  //Change server URL
                 .client(okHttpClient)
                 .build();
 
