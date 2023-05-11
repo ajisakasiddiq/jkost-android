@@ -29,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
 
         searchView.setOnQueryTextListener(new SearchView.onQueryTextListener(){
 
-        })
+        });
         return super.onCreateOptionsMenu(menu);
     }
 }

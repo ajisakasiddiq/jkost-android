@@ -1,18 +1,25 @@
 package com.example.jkost_android;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jkost_android.service.LoginRequest;
+import com.example.jkost_android.service.LoginResponse;
+import com.example.jkost_android.service.apiclient;
 import com.example.jkost_android.ui.fragment.AccountFragment;
 import com.example.jkost_android.ui.fragment.HomeFragment;
 import com.example.jkost_android.ui.fragment.SearchFragment;
@@ -28,6 +35,11 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.jkost_android.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private int selectedTab = 1;
@@ -161,6 +173,72 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+
+
+//
+//        Retrofit
+        TextInputEditText email, password;
+        Button btnlogin;
+
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        btnlogin = findViewById(R.id.btnlogin);
+
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(password.getText().toString())){
+                    Toast.makeText(MainActivity.this,"Username / Password Required", Toast.LENGTH_LONG).show();
+                }else{
+                    //proceed to login
+                    login();
+                }
+
+//
+                public void login(){
+                    LoginRequest loginRequest = new LoginRequest();
+                    loginRequest.setEmail(email.getText().toString());
+                    loginRequest.setPassword(password.getText().toString());
+
+                    Call<LoginResponse> loginResponseCall = apiclient.getUserService().userLogin(loginRequest);
+                    loginResponseCall.enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+                            if(response.isSuccessful()){
+                                Toast.makeText(MainActivity.this,"Login Successful", Toast.LENGTH_LONG).show();
+                                LoginResponse loginResponse = response.body();
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        startActivity(new Intent(MainActivity.this,DashboardActivity.class).putExtra("data",loginResponse.getUsername()));
+                                    }
+                                },700);
+
+                            }else{
+                                Toast.makeText(MainActivity.this,"Login Failed", Toast.LENGTH_LONG).show();
+
+                            }
+
+                        }
+//
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
+                            Toast.makeText(MainActivity.this,"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+
+                        }
+                    });
+//
+
+            }
+        });
+
 
 
     }
