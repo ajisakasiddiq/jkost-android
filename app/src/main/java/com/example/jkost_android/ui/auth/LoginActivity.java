@@ -14,7 +14,7 @@ import com.android.volley.VolleyError;
 import com.example.jkost_android.R;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText etUsername, etPassword;
+    private EditText etEmail, etPassword;
     private Button btnLogin;
     private ProgressDialog progressDialog;
 
@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etUsername = findViewById(R.id.email);
+        etEmail = findViewById(R.id.email);
         etPassword = findViewById(R.id.password);
         btnLogin = findViewById(R.id.btnlogin);
 
@@ -31,12 +31,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Ambil nilai dari edit text username dan password
-                String username = etUsername.getText().toString();
+                String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
                 // Lakukan request ke server dengan menggunakan Volley
                 MyServerRequest serverRequest = new MyServerRequest(LoginActivity.this);
-                serverRequest.login(username, password, new Response.Listener<String>() {
+                serverRequest.login(email, password, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Response berhasil diterima, lakukan aksi yang diperlukan
