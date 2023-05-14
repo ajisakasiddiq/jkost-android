@@ -7,12 +7,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 public class VolleySingleton {
+
     private static VolleySingleton instance;
     private RequestQueue requestQueue;
     private static Context context;
 
     private VolleySingleton(Context context) {
-        this.context = context;
+        VolleySingleton.context = context;
         requestQueue = getRequestQueue();
     }
 
@@ -30,7 +31,7 @@ public class VolleySingleton {
         return requestQueue;
     }
 
-    public <T> void addToRequestQueue(Request<T> request) {
-        getRequestQueue().add(request);
+    public <T> void addToRequestQueue(Request<T> req) {
+        getRequestQueue().add(req);
     }
 }

@@ -17,9 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jkost_android.service.LoginRequest;
-import com.example.jkost_android.service.LoginResponse;
-import com.example.jkost_android.service.apiclient;
+
 import com.example.jkost_android.ui.fragment.AccountFragment;
 import com.example.jkost_android.ui.fragment.HomeFragment;
 import com.example.jkost_android.ui.fragment.SearchFragment;
@@ -48,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
 
         final LinearLayout homeLayout = findViewById(R.id.homeLayout);
