@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.118">
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -52,13 +52,13 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
-            android:hint="Username"
+            android:hint="Name"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:textColorHint="#464646" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -73,7 +73,7 @@
             android:textColorHint="#464646" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -103,7 +103,7 @@
             android:textColorHint="#464646" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_register"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
