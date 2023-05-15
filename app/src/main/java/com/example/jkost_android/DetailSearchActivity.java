@@ -9,6 +9,6 @@ public class DetailSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_search);
+        setContentView(R.layout.activity_search2);
     }
 }
