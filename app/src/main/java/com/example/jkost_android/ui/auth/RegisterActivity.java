@@ -1,5 +1,6 @@
 package com.example.jkost_android.ui.auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Tanggapan dari server jika pendaftaran berhasil
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
                         Toast.makeText(RegisterActivity.this, response, Toast.LENGTH_SHORT).show();
                     }
                 },
