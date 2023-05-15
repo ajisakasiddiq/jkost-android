@@ -31,9 +31,9 @@ public class MyServerRequest {
         this.requestQueue = Volley.newRequestQueue(context);
     }
 
-    public void login(String username, String password, Response.Listener<String> successListener, Response.ErrorListener errorListener) {
+    public void login(String email, String password, Response.Listener<String> successListener, Response.ErrorListener errorListener) {
         // URL endpoint untuk login
-        String url = "http://192.168.1.9penca/api/login";
+        String url = "http://10.0.2.2:8000/api/login";
 
         // membuat objek RequestQueue untuk mengirim request ke server
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -63,13 +63,13 @@ public class MyServerRequest {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // response dari server jika terjadi kesalahan pada request atau response dari server
-                        Toast.makeText(context, "Terjadi kesalahan pada server", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Terjadi kesalahan pada server "+error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", username);
+                params.put("email", email);
                 params.put("password", password);
                 return params;
             }
