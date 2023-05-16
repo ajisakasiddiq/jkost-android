@@ -9,6 +9,7 @@ import android.view.Window;
 
 import com.example.jkost_android.MainActivity;
 import com.example.jkost_android.R;
+import com.example.jkost_android.ui.auth.LoginActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
             }
         }, 3000L); //3000 L = 3 detik
