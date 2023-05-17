@@ -35,9 +35,6 @@ import com.example.jkost_android.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputEditText;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private int selectedTab = 1;
