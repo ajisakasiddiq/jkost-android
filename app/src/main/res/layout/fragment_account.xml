@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/profilebkg"
     tools:context=".ui.fragment.AccountFragment">
 
     <ImageView
@@ -13,7 +12,7 @@
         android:layout_height="100dp"
         android:id="@+id/profileImg"
         android:layout_marginTop="30dp"
-        android:src="@drawable/akwhitelogo"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -24,7 +23,7 @@
         android:id="@+id/titleName"
         android:layout_marginTop="10dp"
         android:text="Name"
-        android:textColor="@color/white"
+        android:textColor="@color/back"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/profileImg"
@@ -36,7 +35,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/titleUsername"
         android:text="username"
-        android:textColor="@color/white"
+        android:textColor="@color/back"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@id/titleName"
         app:layout_constraintStart_toStartOf="@id/titleName"
@@ -206,6 +205,7 @@
         android:text="Edit Profile"
         android:textSize="18sp"
         app:cornerRadius = "20dp"
+        android:background="@drawable/round_back_home_100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/linearLayout"
         app:layout_constraintStart_toStartOf="@id/linearLayout"
