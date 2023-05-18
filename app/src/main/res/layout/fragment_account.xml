@@ -73,7 +73,7 @@
                 android:layout_weight="1"
                 android:text="Name"
                 android:textStyle="bold"
-                android:textColor="@color/lavender"
+                android:textColor="@color/back"
                 android:textSize="18sp"/>
 
             <TextView
@@ -109,7 +109,7 @@
                 android:layout_weight="1"
                 android:text="Email"
                 android:textStyle="bold"
-                android:textColor="@color/lavender"
+                android:textColor="@color/back"
                 android:textSize="18sp"/>
 
             <TextView
@@ -145,7 +145,7 @@
                 android:layout_weight="1"
                 android:text="Username"
                 android:textStyle="bold"
-                android:textColor="@color/lavender"
+                android:textColor="@color/back"
                 android:textSize="18sp"/>
 
             <TextView
@@ -181,7 +181,7 @@
                 android:layout_weight="1"
                 android:text="Password"
                 android:textStyle="bold"
-                android:textColor="@color/lavender"
+                android:textColor="@color/back"
                 android:textSize="18sp"/>
 
             <TextView
