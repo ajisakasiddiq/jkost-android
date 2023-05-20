@@ -1,6 +1,7 @@
 package com.example.jkost_android.ui.auth;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,8 +49,19 @@ public class LoginActivity extends AppCompatActivity {
                         // Terjadi error saat melakukan request ke server
                         Toast.makeText(LoginActivity.this, "Terjadi kesalahan: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
+
+
+
+
+
+
                 });
             }
+
+
+
+
+
 });
     }
 }
