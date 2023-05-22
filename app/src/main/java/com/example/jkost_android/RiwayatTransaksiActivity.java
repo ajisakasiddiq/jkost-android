@@ -21,9 +21,9 @@ public class RiwayatTransaksiActivity extends AppCompatActivity {
 
         //Buat daftar riwayat transaksi
         ArrayList<Transaksi> transaksiList = new ArrayList<>();
-        transaksiList.add(new Transaksi("1 Januari 2023", 100000));
-        transaksiList.add(new Transaksi("1 Maret 2023", 100000));
-        transaksiList.add(new Transaksi("1 Mei 2023", 100000));
+        transaksiList.add(new Transaksi("1 Januari 2023", 300000));
+        transaksiList.add(new Transaksi("1 Maret 2023", 300000));
+        transaksiList.add(new Transaksi("1 Mei 2023", 300000));
 
         //Buat adapter dan hubungkan dengan ListView
         RiwayatTransaksiAdapter adapter = new RiwayatTransaksiAdapter(this, transaksiList);

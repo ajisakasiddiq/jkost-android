@@ -115,7 +115,7 @@
             android:background="@drawable/btn_blue"
             android:text="SignUp"
             android:textColor="#ffffff"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
