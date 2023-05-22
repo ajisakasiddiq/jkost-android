@@ -74,15 +74,7 @@
         android:layout_height="wrap_content"
         android:text="Lama Sewa" />
 
-    <EditText
-        android:id="@+id/editTextDate2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="date" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lama sewa" />
+
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView2"

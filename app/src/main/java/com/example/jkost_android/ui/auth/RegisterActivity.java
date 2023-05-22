@@ -2,9 +2,11 @@ package com.example.jkost_android.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +51,15 @@ public class RegisterActivity extends AppCompatActivity {
         final String name = etname.getText().toString().trim();
         final String email = etEmail.getText().toString().trim();
         final String password = etPassword.getText().toString().trim();
+        TextView textView = findViewById(R.id.signup); // Mengambil referensi TextView dari layout
 
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         // Buat request POST ke URL REGISTER_URL
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {

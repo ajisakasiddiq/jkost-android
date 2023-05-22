@@ -30,7 +30,7 @@ public class TransaksiActivity extends Activity {
         editTextPhone = findViewById(R.id.editTextPhone);
         editTextAlamat = findViewById(R.id.editTextAlamat);
         editTextDate1 = findViewById(R.id.editTextDate1);
-        editTextDate2 = findViewById(R.id.editTextDate2);
+
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
@@ -49,10 +49,10 @@ public class TransaksiActivity extends Activity {
                 String phone = editTextPhone.getText().toString();
                 String Alamat = editTextAlamat.getText().toString();
                 String date1 = editTextDate1.getText().toString();
-                String date2 = editTextDate2.getText().toString();
 
 
-                if ( !NIK.isEmpty() && !name.isEmpty() && !phone.isEmpty() && !date1.isEmpty() && !date2.isEmpty() && !Alamat.isEmpty()) {
+
+                if ( !NIK.isEmpty() && !name.isEmpty() && !phone.isEmpty() && !date1.isEmpty() && !Alamat.isEmpty()) {
                     // Lakukan proses pemesanan kos atau operasi lain sesuai kebutuhan Anda
                     // ...
 
