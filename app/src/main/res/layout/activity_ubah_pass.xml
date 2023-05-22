@@ -106,7 +106,7 @@
                     android:layout_height="55dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/home"
-                    android:text="Login"
+                    android:text="Simpan"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:cornerRadius="30dp"
