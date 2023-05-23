@@ -29,8 +29,8 @@ public class EditProfileActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_PICK = 3;
 
     private ImageView profileImageView;
-    private EditText nameEditText;
-    private EditText emailEditText;
+    private EditText name;
+    private EditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
 
                             // Ambil data pengguna dari respons JSON
+                            String id = jsonObject.getString("id");
                             String name = jsonObject.getString("name");
                             String alamat = jsonObject.getString("alamat");
                             String no_hp = jsonObject.getString("no_hp");
@@ -64,8 +65,8 @@ public class EditProfileActivity extends AppCompatActivity {
                             String username = jsonObject.getString("username");
 
                             // Tampilkan data pengguna di tampilan EditText atau TextView
-                            editTextUsername.setText(username);
-                            editTextEmail.setText(email);
+//                            name.setText(username);
+//                            editTextEmail.setText(email);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

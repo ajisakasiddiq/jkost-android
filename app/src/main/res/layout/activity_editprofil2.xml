@@ -11,43 +11,43 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:id="@+id/TextView1"
+        android:id="@+id/name"
         android:hint="Nama"
         android:inputType="text"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/editUsername"
+        android:id="@+id/Txtusername"
         android:hint="Username"
         android:inputType="text"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/edittl"
+        android:id="@+id/tgllahir"
         android:hint="Tanggal Lahir"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/editjk"
+        android:id="@+id/jenis_kelamin"
         android:hint="Jenis Kelamin"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/editNIK"
+        android:id="@+id/nik"
         android:hint="NIK"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/editEmail"
+        android:id="@+id/email"
         android:hint="Email"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/edtTelp"
+        android:id="@+id/no_hp"
         android:hint="No Telepon"/>
     <Button
         android:layout_width="209dp"
