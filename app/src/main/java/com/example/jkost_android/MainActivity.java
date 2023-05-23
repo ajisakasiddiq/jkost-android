@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         final LinearLayout homeLayout = findViewById(R.id.homeLayout);
         final LinearLayout searchLayout = findViewById(R.id.searchLayout);
         final LinearLayout accountLayout = findViewById(R.id.accountLayout);

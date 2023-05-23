@@ -1,5 +1,6 @@
 package com.example.jkost_android.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -67,8 +68,18 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+       Button edit_btn = view.findViewById(R.id.editBtn);
+        edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(view.getContext(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }
 

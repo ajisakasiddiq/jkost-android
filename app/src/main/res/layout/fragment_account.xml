@@ -200,7 +200,7 @@
     <Button
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:id="@+id/editButton"
+        android:id="@+id/editBtn"
         android:gravity="center"
         android:text="Edit Profile"
         android:textSize="18sp"

@@ -25,27 +25,27 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
-
-        profileImageView = findViewById(R.id.profileImageView);
-        nameEditText = findViewById(R.id.nameEditText);
-        emailEditText = findViewById(R.id.emailEditText);
-        Button changeImageButton = findViewById(R.id.changeImageButton);
-        Button saveButton = findViewById(R.id.saveButton);
-
-        changeImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                selectImage();
-            }
-        });
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                saveProfile();
-            }
-        });
+        setContentView(R.layout.activity_editprofil2);
+//
+//        profileImageView = findViewById(R.id.profileImageView);
+//        nameEditText = findViewById(R.id.nameEditText);
+//        emailEditText = findViewById(R.id.emailEditText);
+//        Button changeImageButton = findViewById(R.id.changeImageButton);
+//        Button saveButton = findViewById(R.id.saveButton);
+//
+//        changeImageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                selectImage();
+//            }
+//        });
+//
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                saveProfile();
+//            }
+//        });
     }
 //    private void selectImage() {
 //        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
