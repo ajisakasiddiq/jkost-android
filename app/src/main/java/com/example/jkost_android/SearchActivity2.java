@@ -15,9 +15,9 @@ public class SearchActivity2 extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<ModelClass> arrayList=new ArrayList<>();
     ArrayList<ModelClass> searchList;
-    String[] fruitList=new String[]{"Kost Cantik, Kost Kafka, Kost Putra Oyi, Kost Orchid, Kost Putri Cinderella"};
+    String[] kostList=new String[]{"Kost Cantik, Kost Kafka, Kost Putra Oyi, Kost Orchid, Kost Putri Cinderella"};
 
-    String[] fruitNum=new String[]{"Kost 1", "Kost 2", "Kost 3", "Kost 4", "Kost 5"};
+    String[] kostNum=new String[]{"Kost 1", "Kost 2", "Kost 3", "Kost 4", "Kost 5"};
 
     int[] imgList=new int[]{R.drawable.kost1,R.drawable.kost2,R.drawable.kost3,R.drawable.kost4,R.drawable.kost5,};
 
@@ -28,10 +28,10 @@ public class SearchActivity2 extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycleView);
         searchView=findViewById(R.id.searchView);
 
-        for (int i = 0; i<fruitList.length ; i++) {
+        for (int i = 0; i<kostList.length ; i++) {
             ModelClass modelClass=new ModelClass();
-            modelClass.setKostName(fruitList[i]);
-            modelClass.setKostNum(fruitNum[i]);
+            modelClass.setKostName(kostList[i]);
+            modelClass.setKostNum(kostNum[i]);
             modelClass.setImg(imgList[i]);
             arrayList.add(modelClass);
         }
