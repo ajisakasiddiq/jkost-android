@@ -12,6 +12,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class EditProfileActivity extends AppCompatActivity {
 
     private static final int REQUEST_PERMISSION = 1;
@@ -26,6 +36,52 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofil2);
+
+        // Buat objek RequestQueue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+// URL endpoint untuk mengambil data pengguna
+        String url = "http://10.10.5.58:8000/api/user";
+
+// Buat permintaan GET
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Tangani respons dari permintaan
+
+                        // Misalkan respons berupa JSON
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            // Ambil data pengguna dari respons JSON
+                            String name = jsonObject.getString("name");
+                            String alamat = jsonObject.getString("alamat");
+                            String no_hp = jsonObject.getString("no_hp");
+                            String jenis_kelamin = jsonObject.getString("kelamin");
+                            String foto = jsonObject.getString("foto");
+                            String email = jsonObject.getString("email");
+                            String username = jsonObject.getString("username");
+
+                            // Tampilkan data pengguna di tampilan EditText atau TextView
+                            editTextUsername.setText(username);
+                            editTextEmail.setText(email);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Tangani kesalahan saat permintaan
+                    }
+                });
+
+// Tambahkan permintaan ke RequestQueue
+        requestQueue.add(stringRequest);
+
+
 //
 //        profileImageView = findViewById(R.id.profileImageView);
 //        nameEditText = findViewById(R.id.nameEditText);
