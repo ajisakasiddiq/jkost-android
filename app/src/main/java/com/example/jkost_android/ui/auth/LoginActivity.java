@@ -1,7 +1,9 @@
 package com.example.jkost_android.ui.auth;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,10 +49,23 @@ public class LoginActivity extends AppCompatActivity {
                 // Lakukan request ke server dengan menggunakan Volley
                 MyServerRequest serverRequest = new MyServerRequest(LoginActivity.this);
                 serverRequest.login(email, password, new Response.Listener<String>() {
+                    private String name;
+                    private String username;
+                    private String userId;
+
                     @Override
                     public void onResponse(String response) {
                         // Response berhasil diterima, lakukan aksi yang diperlukan
                         Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                        // Simpan data login pengguna ke SharedPreferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("Id", userId); // Simpan ID pengguna
+                        editor.putString("username", username);
+                        editor.putString("email", email);
+                        editor.putString("name", name);// Simpan nama pengguna
+                        editor.apply();
+
                     }
                 }, new Response.ErrorListener() {
                     @Override

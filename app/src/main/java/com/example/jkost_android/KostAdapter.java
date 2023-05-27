@@ -11,11 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
 
     Context context;
-    ArrayList<ModelClass> arrayList;
+    List<ModelClass> arrayList;
     LayoutInflater layoutInflater;
 
     public KostAdapter(Context context, ArrayList<ModelClass> arrayList) {
@@ -42,12 +43,13 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
     }
 
     public class MyHolder extends RecyclerView.ViewHolder{
-        TextView kostName, kostNum;
+        TextView kostName, kostNum,kostStatus;
         ImageView img;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            kostName=itemView.findViewById(R.id.txt);
-            kostNum=itemView.findViewById(R.id.txt2);
+            kostName=itemView.findViewById(R.id.name);
+            kostNum=itemView.findViewById(R.id.harga);
+            kostStatus=itemView.findViewById(R.id.status);
             img=itemView.findViewById(R.id.img);
         }
     }

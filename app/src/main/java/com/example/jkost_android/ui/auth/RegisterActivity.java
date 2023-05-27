@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-    private static final String REGISTER_URL = "http://10.10.5.58:8000/api/register";
+    private static final String REGISTER_URL = "http://192.168.1.3:8000/api/register";
 
     private EditText etname;
     private EditText etEmail;

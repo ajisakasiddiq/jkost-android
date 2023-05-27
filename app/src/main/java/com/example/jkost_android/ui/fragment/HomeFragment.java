@@ -3,12 +3,29 @@ package com.example.jkost_android.ui.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.jkost_android.KostAdapter;
+import com.example.jkost_android.ModelClass;
 import com.example.jkost_android.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +33,11 @@ import com.example.jkost_android.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private KostAdapter kamarAdapter;
+    private ArrayList<ModelClass> kamarList;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +82,77 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        kamarList = new ArrayList<ModelClass>();
+        kamarAdapter = new KostAdapter(getContext(), kamarList);
+        recyclerView.setAdapter(kamarAdapter);
+
+        loadKamarData();
+
+        return view;
+    }
+
+
+
+    private void loadKamarData() {
+        String url = "http://192.168.1.3:8000/api/data"; // Ganti dengan URL endpoint API Anda
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                // Mengambil data yang diperlukan dari JSON
+                                String Namakost = jsonObject.getString("nama_kost");
+                                String status = jsonObject.getString("status_kamar");
+                                String no = jsonObject.getString("no_kamar");
+                                String hargaKamar = jsonObject.getString("harga");
+                                String deskripsi = jsonObject.getString("deskripsi_kamar");
+                                String alamat = jsonObject.getString("alamat");
+                                String imgpertama = jsonObject.getString("img_pertama");
+                                String imgkedua = jsonObject.getString("img_kedua");
+                                String imgketiga = jsonObject.getString("img_ketiga");
+                                String imgkeempat = jsonObject.getString("img_keempat");
+
+                                ModelClass kamar = new ModelClass(
+                                Namakost,
+                                status,
+                                no,
+                                hargaKamar,
+                                deskripsi,
+                                alamat,
+                                imgpertama,
+                                imgkedua,
+                                imgketiga,
+                                imgkeempat
+                                );
+                                kamarList.add(kamar);
+                            }
+
+                            kamarAdapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 }

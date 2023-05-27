@@ -12,15 +12,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/img"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:scaleType="fitXY"
-            android:src="@drawable/kost1"/>
+            android:src="@drawable/kost1" />
+
         <TextView
-            android:id="@+id/txt"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -32,17 +37,31 @@
             android:textSize="15dp"/>
 
         <TextView
-            android:id="@+id/txt2"
-            android:layout_width="match_parent"
+            android:id="@+id/harga"
+            android:layout_width="288dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/img"
-            android:layout_below="@+id/txt"
             android:singleLine="true"
-            android:layout_marginLeft="10dp"
+            android:text="Harga"
             android:textColor="@color/black"
-            android:text="Kost Num"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/harga"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="Tersedia"
+            android:textColorHint="@color/green"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
     </RelativeLayout>
 
