@@ -1,7 +1,9 @@
 package com.example.jkost_android.ui.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.jkost_android.EditProfileActivity;
 import com.example.jkost_android.R;
@@ -70,6 +73,13 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
        Button edit_btn = view.findViewById(R.id.editBtn);
+        TextView textViewUserId = view.findViewById(R.id.titleUsername);
+        TextView textViewname = view.findViewById(R.id.titleName);
+        TextView textViewEmail = view.findViewById(R.id.profileEmail);
+        TextView textViewName = view.findViewById(R.id.profileName);
+        TextView textViewnUserName = view.findViewById(R.id.profileUsername);
+
+
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,8 +88,24 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        // Mengakses SharedPreferences untuk mendapatkan data pengguna yang login
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+        String userId = sharedPreferences.getString("userId", ""); // Mendapatkan ID pengguna
+        String username = sharedPreferences.getString("username", ""); // Mendapatkan nama pengguna
+        String email = sharedPreferences.getString("email", "");
+        String name = sharedPreferences.getString("name", "");
 
+// Menampilkan data pengguna yang login
+        textViewUserId.setText("User ID: " + userId);
+        textViewnUserName.setText("Username: " + username);
+        textViewEmail.setText("email: " + email);
+        textViewName.setText("name: " +name);
+        textViewname.setText("name: " +name);
         return view;
+
+
+
+
     }
 }
 
