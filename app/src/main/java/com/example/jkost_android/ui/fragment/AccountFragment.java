@@ -102,10 +102,6 @@ public class AccountFragment extends Fragment {
         textViewName.setText("name: " +name);
         textViewname.setText("name: " +name);
         return view;
-
-
-
-
     }
 }
 

@@ -36,6 +36,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private KostAdapter kamarAdapter;
     private ArrayList<ModelClass> kamarList;
+    private ModelClass modelClass;
+
 
 
 
@@ -46,6 +48,8 @@ public class HomeFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
+
+    private String url = "http://192.168.1.3:8000/api/data";
     private String mParam2;
 
     public HomeFragment() {
@@ -85,22 +89,59 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         kamarList = new ArrayList<ModelClass>();
         kamarAdapter = new KostAdapter(getContext(), kamarList);
         recyclerView.setAdapter(kamarAdapter);
 
+
         loadKamarData();
+//        getData();
 
         return view;
     }
 
-
+//private void getData(){
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//
+//                kamarList = new ArrayList<>();
+//                 try {
+//                     JSONObject jsonObject = new JSONObject(response);
+//                     JSONArray jsonArray = jsonObject.getJSONArray("result");
+//                     for (int i=0;i<jsonArray.length();i++){
+//                         JSONObject data = jsonArray.getJSONObject(i);
+//                         modelClass = new ModelClass();
+//                        modelClass.setNamakost(data.getString("nama_kost"));
+////                        modelClass.getHarga(data.getString("harga"));
+//                        kamarList.add(modelClass);
+//                     }
+//
+////                     RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//                     RecyclerView.Adapter adapter = new KostAdapter(getContext(),kamarList);
+//                     recyclerView.setAdapter(adapter);
+//
+//
+//
+//                 }catch (JSONException e){
+//                     e.printStackTrace();
+//                 }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        });
+//        requestQueue.add(stringRequest);
+//}
 
     private void loadKamarData() {
-        String url = "http://192.168.1.3:8000/api/data"; // Ganti dengan URL endpoint API Anda
+         // Ganti dengan URL endpoint API Anda
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -110,32 +151,10 @@ public class HomeFragment extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                                // Mengambil data yang diperlukan dari JSON
-                                String Namakost = jsonObject.getString("nama_kost");
-                                String status = jsonObject.getString("status_kamar");
-                                String no = jsonObject.getString("no_kamar");
-                                String hargaKamar = jsonObject.getString("harga");
-                                String deskripsi = jsonObject.getString("deskripsi_kamar");
-                                String alamat = jsonObject.getString("alamat");
-                                String imgpertama = jsonObject.getString("img_pertama");
-                                String imgkedua = jsonObject.getString("img_kedua");
-                                String imgketiga = jsonObject.getString("img_ketiga");
-                                String imgkeempat = jsonObject.getString("img_keempat");
-
-                                ModelClass kamar = new ModelClass(
-                                Namakost,
-                                status,
-                                no,
-                                hargaKamar,
-                                deskripsi,
-                                alamat,
-                                imgpertama,
-                                imgkedua,
-                                imgketiga,
-                                imgkeempat
-                                );
-                                kamarList.add(kamar);
+                                modelClass = new ModelClass();
+                                modelClass.setNamakost(jsonObject.getString("nama_kost"));
+//                        modelClass.getHarga(data.getString("harga"));
+                                kamarList.add(modelClass);
                             }
 
                             kamarAdapter.notifyDataSetChanged();

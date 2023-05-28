@@ -34,7 +34,9 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull KostAdapter.MyHolder holder, int position) {
-
+            holder.kostName.setText(arrayList.get(position).getNamakost());
+//            holder.kostNum.setText(arrayList.get(position).getHarga());
+            holder.kostStatus.setText(arrayList.get(position).getStatus());
     }
 
     @Override

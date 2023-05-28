@@ -29,21 +29,10 @@ public class SearchActivity2 extends AppCompatActivity {
         searchView=findViewById(R.id.searchView);
 
         for (int i = 0; i<kostList.length ; i++) {
-            ModelClass modelClass = new ModelClass(
-                    "Namakost",
-                    "status",
-                    "no",
-                    "hargaKamar",
-                    "deskripsi",
-                    "alamat",
-                    "imgpertama",
-                    "imgkedua",
-                    "imgketiga",
-                    "imgkeempat"
-            );
-            modelClass.setKostName(kostList[i]);
-            modelClass.setKostHarga(kostNum[i]);
-            modelClass.setImg(imgList[i]);
+            ModelClass modelClass = new ModelClass();
+            modelClass.setNamakost(kostList[i]);
+            modelClass.setHarga(kostNum[i]);
+            modelClass.setImgpertama(String.valueOf(imgList[i]));
             arrayList.add(modelClass);
         }
 
@@ -60,23 +49,12 @@ public class SearchActivity2 extends AppCompatActivity {
 
                 if (query.length()>0){
                     for (int i = 0; i <arrayList.size() ; i++) {
-                        if (arrayList.get(i).getKostName().toUpperCase().contains(query.toUpperCase())){
+                        if (arrayList.get(i).getNamakost().toUpperCase().contains(query.toUpperCase())){
 
-                            ModelClass modelClass = new ModelClass(
-                                    "Namakost",
-                                    "status",
-                                    "no",
-                                    "hargaKamar",
-                                    "deskripsi",
-                                    "alamat",
-                                    "imgpertama",
-                                    "imgkedua",
-                                    "imgketiga",
-                                    "imgkeempat"
-                            );
-                            modelClass.setKostName(arrayList.get(i).getKostName());
-                            modelClass.setKostHarga(arrayList.get(i).getKostHarga());
-                            modelClass.setImg(Integer.parseInt(arrayList.get(i).getImg()));
+                            ModelClass modelClass = new ModelClass();
+                            modelClass.setNamakost(arrayList.get(i).getNamakost());
+//                            modelClass.setHarga(arrayList.get(i).getHarga(data.getString("harga")));
+//                            modelClass.setImgpertama(Integer.parseInt(arrayList.get(i).setImgpertama()));
                             searchList.add(modelClass);
                         }
                     }
