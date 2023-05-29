@@ -56,15 +56,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Response berhasil diterima, lakukan aksi yang diperlukan
-                        Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                        System.out.println(" data = " + response + " anjing");
+                        Toast.makeText(LoginActivity.this, "Login berhasil" + response, Toast.LENGTH_SHORT).show();
                         // Simpan data login pengguna ke SharedPreferences
-                        SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("Id", userId); // Simpan ID pengguna
-                        editor.putString("username", username);
-                        editor.putString("email", email);
-                        editor.putString("name", name);// Simpan nama pengguna
-                        editor.apply();
 
                     }
                 }, new Response.ErrorListener() {

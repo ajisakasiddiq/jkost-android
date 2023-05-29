@@ -18,12 +18,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.jkost_android.R;
+import com.example.jkost_android.util.UtilApi;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-    private static final String REGISTER_URL = "http://192.168.1.3:8000/api/register";
+    private static final String REGISTER_URL = "http://"+ UtilApi.API_URL  + "/api/register";
 
     private EditText etname;
     private EditText etEmail;
@@ -82,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("name", name);
+                params.put("username",convertToUsername(name));
                 params.put("email", email);
                 params.put("password", password);
                 return params;
@@ -92,4 +94,20 @@ public class RegisterActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+    public static String convertToUsername(String name) {
+        // Menghilangkan spasi di awal dan akhir nama
+        name = name.trim();
+
+        // Mengubah semua karakter menjadi huruf kecil
+        name = name.toLowerCase();
+
+        // Mengganti spasi dengan tanda underscore (_)
+        name = name.replace(" ", "_");
+
+        // Menghapus karakter selain huruf, angka, dan underscore
+        name = name.replaceAll("[^a-z0-9_]", "");
+
+        return name;
+    }
+
 }

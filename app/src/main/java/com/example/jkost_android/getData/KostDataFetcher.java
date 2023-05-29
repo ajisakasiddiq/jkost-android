@@ -8,13 +8,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.jkost_android.util.UtilApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class KostDataFetcher {
-    private static final String DATA_URL = "http://example.com/api/kost";
+    private static final String DATA_URL = "http://"+ UtilApi.API_URL  + "/api/kost";
 
     public void fetchData(final KostDataListener listener) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
