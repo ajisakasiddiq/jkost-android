@@ -16,7 +16,8 @@
     <EditText
         android:id="@+id/editTextNIK"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="masukkan nik"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +27,8 @@
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="masukkan nama "/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +39,8 @@
         android:id="@+id/editTextPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:hint="masukkan nomor"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,12 +50,14 @@
     <EditText
         android:id="@+id/editTextAlamat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint=" masukkan alamat"/>
+
 
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Jenis Kelamin" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jenis Kelamin" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"

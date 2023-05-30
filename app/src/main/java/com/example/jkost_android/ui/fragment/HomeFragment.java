@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
 
-    private String url = "http://192.168.1.3:8000/api/data";
+    private String url = "http://10.212.213.36:8000/api/data";
     private String mParam2;
 
     public HomeFragment() {
@@ -89,7 +89,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         kamarList = new ArrayList<ModelClass>();
@@ -98,7 +97,7 @@ public class HomeFragment extends Fragment {
 
 
         loadKamarData();
-//        getData();
+
 
         return view;
     }
@@ -148,13 +147,14 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray = jsonObject.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                jsonObject = jsonArray.getJSONObject(i);
                                 modelClass = new ModelClass();
                                 modelClass.setNamakost(jsonObject.getString("nama_kost"));
 //                        modelClass.getHarga(data.getString("harga"));
-                                kamarList.add(modelClass);
+                                HomeFragment.this.kamarList.add(modelClass);
                             }
 
                             kamarAdapter.notifyDataSetChanged();
@@ -167,7 +167,7 @@ public class HomeFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                     //   Toast.makeText(getContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
