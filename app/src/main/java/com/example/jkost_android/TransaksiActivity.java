@@ -1,6 +1,7 @@
 package com.example.jkost_android;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -18,7 +19,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.jkost_android.ui.auth.LoginActivity;
+import com.example.jkost_android.ui.auth.RegisterActivity;
 import com.example.jkost_android.util.UtilApi;
+import android.widget.AutoCompleteTextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,7 +125,8 @@ public class TransaksiActivity extends Activity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        // Tangani respons sukses dari API
+                        Intent intent = new Intent(TransaksiActivity.this, RiwayatTransaksiActivity.class);
+                        startActivity(intent);
                     }
                 },
                 new Response.ErrorListener() {

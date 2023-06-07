@@ -9,7 +9,6 @@
 
 
 
-
     <EditText
         android:id="@+id/user_id"
         android:layout_width="match_parent"
