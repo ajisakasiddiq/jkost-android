@@ -1,11 +1,10 @@
 package com.example.jkost_android;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.example.jkost_android.ui.SliderAdapter;
@@ -19,7 +18,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 public class DetailActivity extends AppCompatActivity {
-    private String url = "http://192.168.1.3:8000/api/data";
+    private String url = "http://192.168.1.4:8000//api/data";
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
 
@@ -55,6 +54,7 @@ public class DetailActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         // Tangani respon JSON di sini
                         // Misalnya, parse respon dan tampilkan data di UI
+                        Log.d("DetailActivity", "Response: " + response.toString());
                     }
                 },
                 new Response.ErrorListener() {

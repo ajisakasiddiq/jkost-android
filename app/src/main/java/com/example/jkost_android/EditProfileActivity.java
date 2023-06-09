@@ -190,7 +190,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Terjadi kesalahan pada server " + error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 };
-                myServerRequest.updateProfile(userId, name, username, alamat, noHp, kelamin, email, password, successListener, errorListener);
+//                myServerRequest.updateProfile(userId, name, username, alamat, noHp, kelamin, email, password, successListener, errorListener);
 // Panggil fungsi updateProfile untuk memperbarui profil pengguna
 
 
