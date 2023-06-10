@@ -14,18 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.jkost_android.EditProfileActivity;
 import com.example.jkost_android.R;
-import com.example.jkost_android.util.UtilApi;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,7 +79,7 @@ public class AccountFragment extends Fragment {
         TextView textViewName = view.findViewById(R.id.profileName);
         TextView textViewnUserName = view.findViewById(R.id.profileUsername);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,53 +90,17 @@ public class AccountFragment extends Fragment {
         });
         // Mengakses SharedPreferences untuk mendapatkan data pengguna yang login
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserData", Context.MODE_PRIVATE);
-        String userId = sharedPreferences.getString("Id", ""); // Mendapatkan ID pengguna
-        String url = "http://"+ UtilApi.API_URL  + "/api/userdata/"  + userId;
-// Buat permintaan GET
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Tangani respons dari permintaan
-                        System.out.println("response = " + response);
-                        // Misalkan respons berupa JSON
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-
-                            // Ambil data pengguna dari respons JSON
-                            String id = jsonObject.getString("id");
-                            String name = jsonObject.getString("name");
-                            String alamat = jsonObject.getString("alamat");
-                            String no_hp = jsonObject.getString("no_hp");
-                            String jenis_kelamin = jsonObject.getString("kelamin");
-                            String foto = jsonObject.getString("foto");
-                            String email = jsonObject.getString("email");
-                            String username = jsonObject.getString("username");
-                            String nik = jsonObject.getString("nik");
-                            textViewUserId.setText("" + userId);
-                            textViewnUserName.setText("" + username);
-                            textViewEmail.setText("" + email);
-                            textViewName.setText("" +name);
-                            // Tampilkan data pengguna di tampilan EditText atau TextView
-//                            name.setText(username);
-//                            editTextEmail.setText(email);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Tangani kesalahan saat permintaan
-                    }
-                });
-
-// Tambahkan permintaan ke RequestQueue
-        requestQueue.add(stringRequest);
+        String userId = sharedPreferences.getString("userId", ""); // Mendapatkan ID pengguna
+        String username = sharedPreferences.getString("username", ""); // Mendapatkan nama pengguna
+        String email = sharedPreferences.getString("email", "");
+        String name = sharedPreferences.getString("name", "");
 
 // Menampilkan data pengguna yang login
-
+        textViewUserId.setText("User ID: " + userId);
+        textViewnUserName.setText("Username: " + username);
+        textViewEmail.setText("email: " + email);
+        textViewName.setText("name: " +name);
+        textViewname.setText("name: " +name);
         return view;
     }
 }

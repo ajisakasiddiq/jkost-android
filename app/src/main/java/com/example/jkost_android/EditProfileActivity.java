@@ -190,40 +190,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Terjadi kesalahan pada server " + error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 };
-//                myServerRequest.updateProfile(userId, name, username, alamat, noHp, kelamin, email, password, successListener, errorListener);
-// Panggil fungsi updateProfile untuk memperbarui profil pengguna
-
-
             }
         });
-//
-//        profileImageView = findViewById(R.id.profileImageView);
-//        nameEditText = findViewById(R.id.nameEditText);
-//        emailEditText = findViewById(R.id.emailEditText);
-//        Button changeImageButton = findViewById(R.id.changeImageButton);
-//        Button saveButton = findViewById(R.id.saveButton);
-//
-//        changeImageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                selectImage();
-//            }
-//        });
-//
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                saveProfile();
-//            }
-//        });
     }
-//    private void selectImage() {
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-//            != PackageManager.PERMISSION_GRANTED){
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}
-////                    REQUEST
-//            );
-//        }
-//    }
 }
