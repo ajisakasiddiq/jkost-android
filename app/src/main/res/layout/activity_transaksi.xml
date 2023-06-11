@@ -98,7 +98,8 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/edittext_background"
             android:clickable="true"
-            android:drawableEnd="@drawable/date"
+            android:drawableStart="@drawable/date"
+            android:drawablePadding="10dp"
             android:focusable="false"
             android:hint="Pilih tanggal"
             android:inputType="date" />
