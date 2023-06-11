@@ -7,13 +7,6 @@
     android:orientation="vertical"
     tools:context=".RiwayatTransaksiActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Riwayat Transaksi"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:padding="16dp"/>
 
     <ListView
         android:id="@+id/listView"

@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:queryHint="Nama Kost"/>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView

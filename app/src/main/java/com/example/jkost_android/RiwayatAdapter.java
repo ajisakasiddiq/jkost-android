@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.jkost_android.ui.profile.Transaksi;
+
 import java.util.List;
 
 public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder> {
-    private List<RiwayatPemesanan> riwayatList;
+    private List<Transaksi> riwayatList;
 
-    public RiwayatAdapter(List<RiwayatPemesanan> riwayatList) {
+    public RiwayatAdapter(List<Transaksi> riwayatList) {
         this.riwayatList = riwayatList;
     }
 
@@ -28,10 +30,12 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatV
 
     @Override
     public void onBindViewHolder(@NonNull RiwayatViewHolder holder, int position) {
-        RiwayatPemesanan riwayat = riwayatList.get(position);
+        Transaksi riwayat = riwayatList.get(position);
 
-        holder.namaProdukTextView.setText(riwayat.getNamaProduk());
-        holder.tanggalPemesananTextView.setText(riwayat.getTanggalPemesanan());
+        holder.name.setText(riwayat.getName());
+        holder.no_kamar.setText(riwayat.getNo_kamar());
+        holder.harga.setText(riwayat.getTotal_price());
+        holder.status.setText(riwayat.getStatus());
 
         // Setel informasi lainnya untuk item riwayat pemesanan
     }
@@ -42,13 +46,14 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatV
     }
 
     public static class RiwayatViewHolder extends RecyclerView.ViewHolder {
-        TextView namaProdukTextView;
-        TextView tanggalPemesananTextView;
+        TextView name, harga, no_kamar, status;
 
         public RiwayatViewHolder(@NonNull View itemView) {
             super(itemView);
-            namaProdukTextView = itemView.findViewById(R.id.namaProdukTextView);
-            tanggalPemesananTextView = itemView.findViewById(R.id.tanggalPemesananTextView);
+            name = itemView.findViewById(R.id.name);
+            no_kamar = itemView.findViewById(R.id.no_kamar);
+            harga = itemView.findViewById(R.id.harga);
+            status = itemView.findViewById(R.id.status);
         }
     }
 }

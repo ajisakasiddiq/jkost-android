@@ -1,25 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- riwayat_item.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:padding="3dp">
 
-    <!-- Tambahkan elemen-elemen UI lainnya untuk menampilkan informasi riwayat pemesanan -->
-    <TextView
-        android:id="@+id/namaProdukTextView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:padding="8dp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tanggalPemesananTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:padding="8dp" />
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/kost1" />
 
-    <!-- Elemen UI lainnya -->
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="Kost Name"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/name3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="94dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="NO:"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/no_kamar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="139dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/name"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="No Kamar"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/harga"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="Harga"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/harga"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="Tersedia"
+            android:textColorHint="@color/green"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
