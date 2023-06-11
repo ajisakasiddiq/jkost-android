@@ -9,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.toolbox.StringRequest;
+import com.example.jkost_android.ui.fragment.HomeFragment;
 import com.example.jkost_android.ui.profile.RiwayatTransaksiAdapter;
 import com.example.jkost_android.ui.profile.Transaksi;
 import com.android.volley.Request;
@@ -33,17 +36,20 @@ public class RiwayatTransaksiActivity extends AppCompatActivity {
     private Transaksi transaksi;
 
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_riwayat_transaksi);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
@@ -51,13 +57,14 @@ public class RiwayatTransaksiActivity extends AppCompatActivity {
                                 jsonObject = jsonArray.getJSONObject(i);
                                 transaksi =new Transaksi();
                                 transaksi.setName(jsonObject.getString("nama_kost"));
-                              //  transaksi.setNo_kamar(jsonObject.getString("no_kamar"));
+                                //  transaksi.setNo_kamar(jsonObject.getString("no_kamar"));
 //                                modelClass.setHarga(jsonObject.getString("harga"));
 //                        modelClass.getHarga(data.getString("harga"));
-                              RiwayatTransaksiActivity.this.transaksiList.add(transaksi);
+                                RiwayatTransaksiActivity.this.transaksiList.add(transaksi);
                             }
 
                             riwayatAdapter.notifyDataSetChanged();
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -69,13 +76,7 @@ public class RiwayatTransaksiActivity extends AppCompatActivity {
                         Log.e(TAG, "Eror:" + error.getMessage());
                     }
                 });
-        requestQueue.add(jsonArrayRequest);
 
-        ListView listView = findViewById(R.id.listView);
-
-
-        //Buat adapter dan hubungkan dengan ListView
-        RiwayatTransaksiAdapter adapter = new RiwayatTransaksiAdapter(this, transaksiList);
-        listView.setAdapter(adapter);
+           Volley.newRequestQueue(RiwayatTransaksiActivity.this).add(stringRequest);
     }
 }
