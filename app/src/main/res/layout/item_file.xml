@@ -26,15 +26,41 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/img"
             android:singleLine="true"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
             android:text="Kost Name"
-            android:textSize="15dp"/>
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/name3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="94dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="NO:"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/no_kamar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="139dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/name"
+            android:layout_toRightOf="@+id/img"
+            android:singleLine="true"
+            android:text="No Kamar"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/harga"

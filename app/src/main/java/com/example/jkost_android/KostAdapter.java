@@ -35,6 +35,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull KostAdapter.MyHolder holder, int position) {
             holder.kostName.setText(arrayList.get(position).getNamakost());
+            holder.nokamar.setText(arrayList.get(position).getNo_kamar());
 //            holder.kostNum.setText(arrayList.get(position).getHarga());
             holder.kostStatus.setText(arrayList.get(position).getStatus());
     }
@@ -45,7 +46,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
     }
 
     public class MyHolder extends RecyclerView.ViewHolder{
-        TextView kostName, kostNum,kostStatus;
+        TextView kostName, kostNum,kostStatus,nokamar;
         ImageView img;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,6 +54,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
             kostNum=itemView.findViewById(R.id.harga);
             kostStatus=itemView.findViewById(R.id.status);
             img=itemView.findViewById(R.id.img);
+            nokamar=itemView.findViewById(R.id.no_kamar);
         }
     }
 }

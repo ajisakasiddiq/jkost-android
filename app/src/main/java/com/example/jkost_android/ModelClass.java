@@ -1,10 +1,18 @@
 package com.example.jkost_android;
 
 public class ModelClass {
-    private String  nama_kost ,status,no, harga,deskripsi,alamat,imgpertama,imgkedua, imgketiga,imgkeempat;
+    private String  nama_kost,no_kamar ,status,no, harga,deskripsi,alamat,imgpertama,imgkedua, imgketiga,imgkeempat;
 
     public String getNamakost() {
         return nama_kost;
+    }
+
+    public String getNo_kamar() {
+        return no_kamar;
+    }
+
+    public void setNo_kamar(String no_kamar) {
+        this.no_kamar = no_kamar;
     }
 
     public void setNamakost(String namakost) {
