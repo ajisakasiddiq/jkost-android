@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
 
-    private String url = "http://10.212.213.36:8000/api/data";
+    private String url = "http://192.168.1.4:8000/api/data";
     private String mParam2;
 
     public HomeFragment() {
