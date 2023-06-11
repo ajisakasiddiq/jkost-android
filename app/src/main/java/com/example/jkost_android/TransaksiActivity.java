@@ -2,8 +2,10 @@ package com.example.jkost_android;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -21,13 +23,18 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.jkost_android.ui.auth.LoginActivity;
+import com.example.jkost_android.ui.auth.RegisterActivity;
 import com.example.jkost_android.util.UtilApi;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TransaksiActivity extends Activity {
 
@@ -97,9 +104,7 @@ public class TransaksiActivity extends Activity {
 
 
         editTextTgl = findViewById(R.id.tgl_sewa);
-        btnimg = findViewById(R.id.imageButton);
-//        editTextTotal = findViewById(R.id.total_price);
-
+        editTextTotal = findViewById(R.id.total_price);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
         editTextTgl.setOnClickListener(new View.OnClickListener() {
@@ -135,44 +140,45 @@ public class TransaksiActivity extends Activity {
                 String durasi = editTextDurasi.getSelectedItem().toString().trim();
                 String tglpesan = editTextTgl.getText().toString().trim();
                 String total = editTextTotal.getText().toString().trim();
-                // Buat objek JSON untuk dikirim ke API
-                JSONObject requestObject = new JSONObject();
-                try {
-                    requestObject.put("user_id", editTextUserId);
-                    requestObject.put("kamar_id", editTextKamarId);
-                    requestObject.put("nama_pemesan", editTextNamePesan);
-                    requestObject.put("durasi_sewa", editTextDurasi);
-                    requestObject.put("total_price", editTextTotal);
-                    requestObject.put("tgl_sewa", editTextTgl);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
 
                 // Buat permintaan HTTP POST menggunakan Volley
                 String url = "http://"+ UtilApi.API_URL  + "/api/order";
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, requestObject,
-                        new Response.Listener<JSONObject>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
                             @Override
-                            public void onResponse(JSONObject response) {
-                                // Tanggapan sukses dari API
-                                try {
-                                    String message = response.getString("message");
-                                    Toast.makeText(TransaksiActivity.this, message, Toast.LENGTH_SHORT).show();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                            public void onResponse(String response) {
+                                // Tangani respons yang diterima setelah mengirim transaksi
+                                // Misalnya, tampilkan pesan sukses atau lakukan tindakan lain
+                                Toast.makeText(TransaksiActivity.this, "Transaksi berhasil", Toast.LENGTH_SHORT).show();
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                // Tanggapan error dari API
-                                Toast.makeText(TransaksiActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                // Tangani kesalahan yang terjadi saat mengirim transaksi
+                                // Misalnya, tampilkan pesan error atau lakukan tindakan lain
+                                Toast.makeText(TransaksiActivity.this, "Terjadi kesalahan: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                             }
-                        });
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        // Mengirim data transaksi dalam bentuk parameter
+                        Map<String, String> params = new HashMap<>();
+                        params.put("user_id", userId);
+                        params.put("kamar_id", kamarid);
+                        params.put("nama_pemesan", namapemesan);
+                        params.put("durasi_sewa", durasi);
+                        params.put("total_price", total);
+                        params.put("tgl_sewa", tglpesan);
+                        // Tambahkan parameter lain sesuai kebutuhan Anda
+                        return params;
+                    }
+                };
 
-                // Tambahkan permintaan ke antrian permintaan Volley
-                Volley.newRequestQueue(TransaksiActivity.this).add(jsonObjectRequest);
+// Tambahkan permintaan ke antrian permintaan Volley
+                Volley.newRequestQueue(TransaksiActivity.this).add(stringRequest);
+
             }
         });
     }
