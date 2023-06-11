@@ -99,7 +99,7 @@ public class MyServerRequest {
     }
     public void updateProfile(String userId, String name, String username, String alamat, String noHp, String kelamin, String email, String password, Response.Listener<JSONObject> successListener, Response.ErrorListener errorListener) {
         // URL endpoint untuk update profil
-        String url = "http://192.168.1.20:8000/api/user-update/";
+        String url = "http://"+ UtilApi.API_URL  + "/api/user-update/";
 
         // Buat objek JSON untuk mengirim data yang akan diperbarui
         JSONObject requestBody = new JSONObject();

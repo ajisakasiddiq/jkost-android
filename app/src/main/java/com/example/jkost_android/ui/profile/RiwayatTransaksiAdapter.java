@@ -26,9 +26,9 @@ public class RiwayatTransaksiAdapter extends ArrayAdapter<Transaksi> {
 
         TextView textViewTanggal = convertView.findViewById(R.id.textViewTanggal);
         TextView textViewTotal = convertView.findViewById(R.id.textViewTotal);
-
-        textViewTanggal.setText(transaksi.getTanggal());
-        textViewTotal.setText(String.valueOf(transaksi.getTotal()));
+//
+//        textViewTanggal.setText(transaksi.getTanggal());
+//        textViewTotal.setText(String.valueOf(transaksi.getTotal()));
 
         return convertView;
     }
