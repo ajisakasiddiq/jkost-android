@@ -27,19 +27,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name=".ui.auth.RegisterActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".ui.auth.login"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".MainActivity"-->
-<!--            android:exported="true" />-->
-<!--        <activity-->
-<!--            android:name=".EditprofilActivity"-->
-<!--            android:exported="false" />-->
-
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RiwayatTransaksiActivity"
+            android:exported="false" />
         <activity
             android:name=".SearchActivity2"
             android:exported="false" />
