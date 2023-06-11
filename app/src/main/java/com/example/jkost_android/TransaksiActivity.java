@@ -102,7 +102,7 @@ public class TransaksiActivity extends Activity {
 
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
-        btnimg.setOnClickListener(new View.OnClickListener() {
+        editTextTgl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar calendar = Calendar.getInstance();
