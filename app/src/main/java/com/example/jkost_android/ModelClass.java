@@ -1,7 +1,15 @@
 package com.example.jkost_android;
 
 public class ModelClass {
-    private String  nama_kost,no_kamar ,status,no, harga,deskripsi,alamat,imgpertama,imgkedua, imgketiga,imgkeempat;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String  id,nama_kost,no_kamar ,status,no, harga,deskripsi,alamat,imgpertama,imgkedua, imgketiga,imgkeempat;
 
     public String getNamakost() {
         return nama_kost;

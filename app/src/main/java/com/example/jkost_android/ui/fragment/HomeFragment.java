@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.jkost_android.DetailActivity;
 import com.example.jkost_android.EditProfileActivity;
 import com.example.jkost_android.KostAdapter;
 import com.example.jkost_android.ModelClass;
@@ -33,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,27 +98,36 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        View view2 = inflater.inflate(R.layout.item_file, container, false);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
 
-        item = view2.findViewById(R.id.item);
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         kamarList = new ArrayList<ModelClass>();
         kamarAdapter = new KostAdapter(getContext(), kamarList);
         recyclerView.setAdapter(kamarAdapter);
-        item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), TransaksiActivity.class);
-                startActivity(intent);
-            }
-        });
 
         loadKamarData();
-
+//        recyclerView.setOnClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                // Dapatkan item yang diklik dari adapter
+//
+//                modelClass = new ModelClass();
+//                ModelClass item = kamarAdapter.getItem(position);
+//
+//                // Simpan data item yang diklik ke SharedPreferences
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.putString("clickedItem", item.getId());
+//                editor.apply();
+//
+//                // Beralih ke halaman DetailActivity
+//                Intent intent = new Intent(getActivity(), DetailActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         return view;
     }

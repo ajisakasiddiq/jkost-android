@@ -15,15 +15,25 @@ import java.util.List;
 
 public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
 
+//    private final OnItemClickListener listener;
     Context context;
     List<ModelClass> arrayList;
     LayoutInflater layoutInflater;
 
+//    , OnItemClickListener listener
     public KostAdapter(Context context, ArrayList<ModelClass> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+//        this.arrayList = arrayList;
+//        this.listener = listener;
         layoutInflater=LayoutInflater.from(context);
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(ModelClass item);
+    }
+
+
 
     @NonNull
     @Override
@@ -34,6 +44,8 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull KostAdapter.MyHolder holder, int position) {
+        ModelClass item = arrayList.get(position);
+
             holder.kostName.setText(arrayList.get(position).getNamakost());
             holder.nokamar.setText(arrayList.get(position).getNo_kamar());
 //            holder.kostNum.setText(arrayList.get(position).getHarga());
@@ -45,8 +57,13 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
         return arrayList.size();
     }
 
+    public ModelClass getItem(int position) {
+        return arrayList.get(position);
+    }
+
+
     public class MyHolder extends RecyclerView.ViewHolder{
-        TextView kostName, kostNum,kostStatus,nokamar;
+        TextView kostName, kostNum,kostStatus,nokamar,id;
         ImageView img;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
