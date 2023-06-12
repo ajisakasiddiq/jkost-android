@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -42,6 +43,7 @@ public class TransaksiActivity extends Activity {
     private Spinner  editTextDurasi;
     private ImageButton btnimg;
     private Button buttonSubmit;
+    private String url = "http://"+ UtilApi.API_URL  + "/api/order";
     private int durasiSewa;
     private int tahun,bulan,hari;
     private AutoCompleteTextView autoCompleteTextView, autoCompleteTextView2;
@@ -56,9 +58,9 @@ public class TransaksiActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaksi);
 
+
         SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
         String userId = sharedPreferences.getString("Id", "");
-
         editTextUserId = findViewById(R.id.user_id);
         editTextUserId.setText(userId);
         editTextUserId.setVisibility(View.GONE);
@@ -130,57 +132,66 @@ public class TransaksiActivity extends Activity {
             }
         });
 
+
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Ambil input pengguna
-                String userid = editTextUserId.getText().toString().trim();
-                String kamarid = editTextKamarId.getText().toString().trim();
-                String namapemesan = editTextNamePesan.getText().toString().trim();
-                String durasi = editTextDurasi.getSelectedItem().toString().trim();
-                String tglpesan = editTextTgl.getText().toString().trim();
-                String total = editTextTotal.getText().toString().trim();
-
-
-                // Buat permintaan HTTP POST menggunakan Volley
-                String url = "http://"+ UtilApi.API_URL  + "/api/order";
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                // Tangani respons yang diterima setelah mengirim transaksi
-                                // Misalnya, tampilkan pesan sukses atau lakukan tindakan lain
-                                Toast.makeText(TransaksiActivity.this, "Transaksi berhasil", Toast.LENGTH_SHORT).show();
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // Tangani kesalahan yang terjadi saat mengirim transaksi
-                                // Misalnya, tampilkan pesan error atau lakukan tindakan lain
-                                Toast.makeText(TransaksiActivity.this, "Terjadi kesalahan: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }) {
-                    @Override
-                    protected Map<String, String> getParams() {
-                        // Mengirim data transaksi dalam bentuk parameter
-                        Map<String, String> params = new HashMap<>();
-                        params.put("user_id", userId);
-                        params.put("kamar_id", kamarid);
-                        params.put("nama_pemesan", namapemesan);
-                        params.put("durasi_sewa", durasi);
-                        params.put("total_price", total);
-                        params.put("tgl_sewa", tglpesan);
-                        // Tambahkan parameter lain sesuai kebutuhan Anda
-                        return params;
-                    }
-                };
-
-// Tambahkan permintaan ke antrian permintaan Volley
-                Volley.newRequestQueue(TransaksiActivity.this).add(stringRequest);
-
+                transaksi();
             }
         });
+
     }
+
+
+
+    private void transaksi() {
+        final String userid = editTextUserId.getText().toString().trim();
+        final String kamarid = editTextKamarId.getText().toString().trim();
+        final String namapemesan = editTextNamePesan.getText().toString().trim();
+        final String durasi = editTextDurasi.getSelectedItem().toString().trim();
+        final String tglpesan = editTextTgl.getText().toString().trim();
+        final String total = editTextTotal.getText().toString().trim();
+
+        // Buat request POST ke URL REGISTER_URL
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Tanggapan dari server jika pendaftaran berhasil
+                        Intent intent = new Intent(TransaksiActivity.this, RiwayatTransaksiActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(TransaksiActivity.this, response, Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Tanggapan dari server jika terjadi kesalahan
+                        Toast.makeText(TransaksiActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("user_id", userid);
+                params.put("kamar_id", kamarid);
+                params.put("nama_pemesan", namapemesan);
+                params.put("durasi_sewa", durasi);
+                params.put("total_price", total);
+                params.put("tgl_sewa", tglpesan);
+                return params;
+            }
+        };
+
+        // Buat antrian permintaan Volley dan tambahkan permintaan ke antrian
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
+
+
+
 
 }
