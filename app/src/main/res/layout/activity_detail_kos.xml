@@ -20,39 +20,54 @@
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/textViewStatusKost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:text="Status Kost"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/priceTextView"
+        android:id="@+id/textViewStatusKamar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_below="@+id/textViewStatusKost"
+        android:text="Status Kamar"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/addressTextView"
+        android:id="@+id/textViewNamaKost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_below="@+id/textViewStatusKamar"
+        android:text="Nama Kost"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/facilitiesTextView"
+        android:id="@+id/textViewAlamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_below="@+id/textViewNamaKost"
+        android:text="Alamat"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewDeskripsiKost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAlamat"
+        android:text="Deskripsi Kost"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
 
         <Button
             android:id="@+id/login_button"
