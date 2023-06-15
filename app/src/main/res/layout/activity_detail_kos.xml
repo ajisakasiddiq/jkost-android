@@ -13,55 +13,49 @@
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
-
     <TextView
         android:id="@+id/textViewStatusKost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status Kost"
         android:textSize="18sp"
         android:textStyle="bold" />
+<!--        android:text="Status Kost"-->
 
     <TextView
         android:id="@+id/textViewStatusKamar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewStatusKost"
-        android:text="Status Kamar"
         android:textSize="18sp"
         android:textStyle="bold" />
+<!--        android:text="Status Kamar"-->
 
     <TextView
         android:id="@+id/textViewNamaKost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewStatusKamar"
-        android:text="Nama Kost"
         android:textSize="18sp"
         android:textStyle="bold" />
+<!--        android:text="Nama Kost"-->
 
     <TextView
         android:id="@+id/textViewAlamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewNamaKost"
-        android:text="Alamat"
         android:textSize="18sp"
         android:textStyle="bold" />
 
+<!--        android:text="Alamat"-->
     <TextView
         android:id="@+id/textViewDeskripsiKost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewAlamat"
-        android:text="Deskripsi Kost"
         android:textSize="18sp"
         android:textStyle="bold" />
+<!--        android:text="Deskripsi Kost"-->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -71,13 +65,13 @@
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/green"
             android:text="Pesan Sekarang!"
             android:textColor="@color/black"
-            android:layout_marginTop="20dp"
             android:textSize="18sp"
             app:cornerRadius="30dp"
             tools:layout_editor_absoluteX="85dp"

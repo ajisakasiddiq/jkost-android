@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.jkost_android.KostAdapter;
 import com.example.jkost_android.ModelClass;
 import com.example.jkost_android.R;
+import com.example.jkost_android.util.UtilApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,7 +50,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
 
-    private String url = "http://10.212.213.36:8000/api/data";
+    private String url = "http://"+ UtilApi.API_URL  + "/api/data";
     private String mParam2;
 
     public HomeFragment() {
@@ -101,43 +102,6 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
-
-//private void getData(){
-//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//
-//                kamarList = new ArrayList<>();
-//                 try {
-//                     JSONObject jsonObject = new JSONObject(response);
-//                     JSONArray jsonArray = jsonObject.getJSONArray("result");
-//                     for (int i=0;i<jsonArray.length();i++){
-//                         JSONObject data = jsonArray.getJSONObject(i);
-//                         modelClass = new ModelClass();
-//                        modelClass.setNamakost(data.getString("nama_kost"));
-////                        modelClass.getHarga(data.getString("harga"));
-//                        kamarList.add(modelClass);
-//                     }
-//
-////                     RecyclerView recyclerView = findViewById(R.id.recyclerView);
-//                     RecyclerView.Adapter adapter = new KostAdapter(getContext(),kamarList);
-//                     recyclerView.setAdapter(adapter);
-//
-//
-//
-//                 }catch (JSONException e){
-//                     e.printStackTrace();
-//                 }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        requestQueue.add(stringRequest);
-//}
 
     private void loadKamarData() {
          // Ganti dengan URL endpoint API Anda

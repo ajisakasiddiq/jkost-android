@@ -63,7 +63,7 @@ public class TransaksiActivity extends Activity {
         String userId = sharedPreferences.getString("Id", "");
         editTextUserId = findViewById(R.id.user_id);
         editTextUserId.setText(userId);
-        editTextUserId.setVisibility(View.GONE);
+//        editTextUserId.setVisibility(View.GONE);
         editTextKamarId = findViewById(R.id.kamar_id);
         editTextNamePesan = findViewById(R.id.nama_pemesan);
         editTextTotal = findViewById(R.id.total_price);
@@ -152,15 +152,16 @@ public class TransaksiActivity extends Activity {
         final String tglpesan = editTextTgl.getText().toString().trim();
         final String total = editTextTotal.getText().toString().trim();
 
-        // Buat request POST ke URL REGISTER_URL
+//         Buat request POST ke URL REGISTER_URL
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Tanggapan dari server jika pendaftaran berhasil
-                        Intent intent = new Intent(TransaksiActivity.this, RiwayatTransaksiActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(TransaksiActivity.this, response, Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(TransaksiActivity.this, RiwayatTransaksiActivity.class);
+//                        startActivity(intent);
+//                        Toast.makeText(TransaksiActivity.this, response, Toast.LENGTH_SHORT).show();
+                        Log.d("Transaction Success"+response, "Transaction was successful!");
                     }
                 },
                 new Response.ErrorListener() {
@@ -174,12 +175,19 @@ public class TransaksiActivity extends Activity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("user_id", userid);
-                params.put("kamar_id", kamarid);
-                params.put("nama_pemesan", namapemesan);
-                params.put("durasi_sewa", durasi);
-                params.put("total_price", total);
-                params.put("tgl_sewa", tglpesan);
+//                params.put("user_id", userid);
+//                params.put("kamar_id", kamarid);
+//                params.put("nama_pemesan", namapemesan);
+//                params.put("durasi_sewa", durasi);
+//                params.put("total_price", total);
+//                params.put("tgl_sewa", tglpesan);
+
+                params.put("user_id", "3");
+                params.put("kamar_id", "1");
+                params.put("nama_pemesan", "yusuf");
+                params.put("durasi_sewa", "2");
+                params.put("total_price", "450000");
+                params.put("tgl_sewa", "2023-06-12");
                 return params;
             }
         };
@@ -187,6 +195,45 @@ public class TransaksiActivity extends Activity {
         // Buat antrian permintaan Volley dan tambahkan permintaan ke antrian
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+
+//
+//        // Membuat RequestQueue dengan menggunakan Volley
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//// Membuat objek JSON untuk dikirimkan sebagai permintaan
+//        JSONObject requestBody = new JSONObject();
+//        try {
+//                requestBody.put("user_id", userid);
+//                requestBody.put("kamar_id", kamarid);
+//                requestBody.put("nama_pemesan", namapemesan);
+//                requestBody.put("durasi_sewa", durasi);
+//                requestBody.put("total_price", total);
+//                requestBody.put("tgl_sewa", tglpesan);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//// Membuat permintaan POST dengan Volley
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, requestBody,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Intent intent = new Intent(TransaksiActivity.this, RiwayatTransaksiActivity.class);
+//                        startActivity(intent);
+////                        Toast.makeText(TransaksiActivity.this, response, Toast.LENGTH_SHORT).show();
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        // Tangani kesalahan dari permintaan
+//                        // ...
+//                        error.printStackTrace();
+//                    }
+//                });
+//
+//// Menambahkan permintaan ke RequestQueue
+//        queue.add(request);
     }
 
 
