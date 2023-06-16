@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     private KostAdapter kamarAdapter;
     private ArrayList<ModelClass> kamarList;
     private ModelClass modelClass;
+    private Button btnpesan;
 
 
 
@@ -96,12 +98,15 @@ public class HomeFragment extends Fragment {
         kamarAdapter = new KostAdapter(getContext(), kamarList);
         recyclerView.setAdapter(kamarAdapter);
 
-
         loadKamarData();
 
 
+        btnpesan = view.findViewById(R.id.btnPesan);
         return view;
     }
+
+
+
 
     private void loadKamarData() {
          // Ganti dengan URL endpoint API Anda
