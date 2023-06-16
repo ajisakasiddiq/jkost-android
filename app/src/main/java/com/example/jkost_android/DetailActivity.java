@@ -1,5 +1,7 @@
 package com.example.jkost_android;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -70,51 +72,15 @@ public class DetailActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         loaddetails();
-//        load();
     }
 
 
-
-private void load(){
-
-//    Simulasi respons JSON
-    String jsonResponse = "[{ \"nama_kost\": \"kos anjayy\", \"alamat\": \"mastrip\", \"deskripsi_kost\": \"enek wifi\", \"slug\": \"nama-kost\", \"longitude\": \"323113\", \"latitude\": \"323113\", \"jenis_kamar\": \"Bebas\", \"no_kamar\": 20, \"harga\": 20000, \"img_pertama\": \"1.jpg\", \"img_kedua\": \"2.jpg\", \"img_ketiga\": \"3.jpg\", \"img_keempat\": \"4.jpg\", \"deskripsi_kamar\": \"enak banget\" }]";
-//String jsonResponse ="[]";
-    try {
-        JSONArray jsonArray = new JSONArray(jsonResponse);
-
-        if (jsonArray.length() > 0) {
-            JSONObject data = jsonArray.getJSONObject(0);
-
-            String statusKost = data.getString("status_kost");
-            String statusKamar = data.getString("status_kamar");
-            String namaKost = data.getString("nama_kost");
-            String alamat = data.getString("alamat");
-            String deskripsiKost = data.getString("deskripsi_kost");
-
-            // Set nilai ke TextView
-            textViewStatusKost.setText(statusKost);
-            textViewStatusKamar.setText(statusKamar);
-            textViewNamaKost.setText(namaKost);
-            textViewAlamat.setText(alamat);
-            textViewDeskripsiKost.setText(deskripsiKost);
-
-            // Tampilkan data ke dalam UI atau lakukan operasi lainnya
-            Log.d(TAG, "Status Kost: " + statusKost);
-            Log.d(TAG, "Status Kamar: " + statusKamar);
-            Log.d(TAG, "Nama Kost: " + namaKost);
-            Log.d(TAG, "Alamat: " + alamat);
-            Log.d(TAG, "Deskripsi Kost: " + deskripsiKost);
-        } else {
-            Log.d(TAG, "Data kosong");
-        }
-    } catch (JSONException e) {
-        e.printStackTrace();
-    }
-}
 
     private void loaddetails() {
         String targetId = "1";
+        SharedPreferences sharedPreferences = getSharedPreferences("idkamar", Context.MODE_PRIVATE);
+        String roomId = sharedPreferences.getString("id", "");
+        Log.d("SharedPreferences", "Room ID: " + roomId);
         String url = "http://"+ UtilApi.API_URL  + "/api/data/" +targetId;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
