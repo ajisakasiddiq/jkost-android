@@ -85,6 +85,35 @@
        </LinearLayout>
 
 
+<!--       &lt;!&ndash;   search&ndash;&gt;-->
+<!--       <LinearLayout-->
+<!--           android:id="@+id/RiwayatLayout"-->
+<!--           android:background="@android:color/transparent"-->
+<!--           android:layout_width="wrap_content"-->
+<!--           android:layout_height="50dp"-->
+<!--           android:paddingStart="5dp"-->
+<!--           android:paddingEnd="5dp"-->
+<!--           android:gravity="center"-->
+<!--           android:layout_weight="1">-->
+<!--           <ImageView-->
+<!--               android:id="@+id/RiwayatImage"-->
+<!--               android:layout_width="20dp"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:adjustViewBounds="true"-->
+<!--               android:src="@drawable/search"/>-->
+
+<!--           <TextView-->
+<!--               android:id="@+id/riwayatTxt"-->
+<!--               android:visibility="gone"-->
+<!--               android:layout_width="wrap_content"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:text="History "-->
+<!--               android:textStyle="bold"-->
+<!--               android:textColor="@color/white"-->
+<!--               android:layout_marginStart="10dp"-->
+<!--               android:textSize="16sp"/>-->
+<!--       </LinearLayout>-->
+
        <!--   Account-->
        <LinearLayout
            android:id="@+id/accountLayout"

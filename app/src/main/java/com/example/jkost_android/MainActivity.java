@@ -49,15 +49,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         final LinearLayout homeLayout = findViewById(R.id.homeLayout);
+//        final LinearLayout historyLayout = findViewById(R.id.RiwayatLayout);
         final LinearLayout searchLayout = findViewById(R.id.searchLayout);
         final LinearLayout accountLayout = findViewById(R.id.accountLayout);
 
         final ImageView homeImage = findViewById(R.id.homeImage);
         final ImageView searchImage = findViewById(R.id.searchImage);
+//        final ImageView historyImage = findViewById(R.id.searchImage);
         final ImageView accountImage = findViewById(R.id.accountImage);
 
         final TextView homeTxt = findViewById(R.id.homeTxt);
         final TextView searchTxt = findViewById(R.id.searchTxt);
+//        final TextView historyTxt = findViewById(R.id.riwayatTxt);
         final TextView accountTxt = findViewById(R.id.accountTxt);
 
 

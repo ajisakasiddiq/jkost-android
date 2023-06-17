@@ -50,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView textViewStatusKamar;
     private TextView textViewNamaKost;
     private TextView textViewAlamat;
-    private TextView textViewDeskripsiKost;
+    private TextView textViewDeskripsiKost,textViewNoKamar;
 
     public DetailActivity() {
     }
@@ -62,8 +62,8 @@ public class DetailActivity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.viewPager);
 //        tabLayout = findViewById(R.id.tabLayout);
-        textViewStatusKost = findViewById(R.id.textViewStatusKost);
-        textViewStatusKamar = findViewById(R.id.textViewStatusKamar);
+//        textViewStatusKost = findViewById(R.id.textViewStatusKost);
+        textViewNoKamar = findViewById(R.id.no_kamar);
         textViewNamaKost = findViewById(R.id.textViewNamaKost);
         textViewAlamat = findViewById(R.id.textViewAlamat);
         textViewDeskripsiKost = findViewById(R.id.textViewDeskripsiKost);
@@ -104,9 +104,11 @@ public class DetailActivity extends AppCompatActivity {
                                 String namaKost = desiredData.getString("nama_kost");
                                 String alamat = desiredData.getString("alamat");
                                 String deskripsiKost = desiredData.getString("deskripsi_kost");
+                                String nokamar = desiredData.getString("no_kamar");
 
 //                                textViewStatusKost.setText(statusKost);
 //                                textViewStatusKamar.setText(statusKamar);
+                                textViewNoKamar.setText("No Kamar : "+nokamar);
                                 textViewNamaKost.setText(namaKost);
                                 textViewAlamat.setText(alamat);
                                 textViewDeskripsiKost.setText(deskripsiKost);
