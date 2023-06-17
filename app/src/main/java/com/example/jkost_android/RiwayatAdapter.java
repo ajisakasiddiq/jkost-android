@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.jkost_android.ui.profile.Transaksi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder> {
@@ -29,12 +30,10 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatV
 
     @Override
     public void onBindViewHolder(@NonNull RiwayatViewHolder holder, int position) {
-        Transaksi riwayat = riwayatList.get(position);
+        Transaksi item = riwayatList.get(position);
 
-        holder.name.setText(riwayat.getName());
-        holder.no_kamar.setText(riwayat.getNo_kamar());
-        holder.harga.setText(riwayat.getTotal_price());
-        holder.status.setText(riwayat.getStatus());
+        holder.name.setText(riwayatList.get(position).getNama_kost());
+
 
         // Setel informasi lainnya untuk item riwayat pemesanan
     }
