@@ -184,7 +184,7 @@ public class TransaksiActivity extends Activity {
 
                 params.put("user_id", "3");
                 params.put("kamar_id", "1");
-                params.put("nama_pemesan", "yusuf");
+                params.put("nama_pemesan", "ss");
                 params.put("durasi_sewa", "2");
                 params.put("total_price", "450000");
                 params.put("tgl_sewa", "2023-06-12");

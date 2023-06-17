@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment {
         loadKamarData();
 
 
-        btnpesan = view.findViewById(R.id.btnPesan);
+//        btnpesan = view.findViewById(R.id.btnPesan);
         return view;
     }
 
