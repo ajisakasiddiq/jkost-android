@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 
 import com.example.jkost_android.ui.fragment.AccountFragment;
+import com.example.jkost_android.ui.fragment.HistoryFragment;
 import com.example.jkost_android.ui.fragment.HomeFragment;
 import com.example.jkost_android.ui.fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,18 +50,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         final LinearLayout homeLayout = findViewById(R.id.homeLayout);
-//        final LinearLayout historyLayout = findViewById(R.id.RiwayatLayout);
+        final LinearLayout historyLayout = findViewById(R.id.RiwayatLayout);
         final LinearLayout searchLayout = findViewById(R.id.searchLayout);
         final LinearLayout accountLayout = findViewById(R.id.accountLayout);
 
         final ImageView homeImage = findViewById(R.id.homeImage);
         final ImageView searchImage = findViewById(R.id.searchImage);
-//        final ImageView historyImage = findViewById(R.id.searchImage);
+        final ImageView historyImage = findViewById(R.id.RiwayatImage);
         final ImageView accountImage = findViewById(R.id.accountImage);
 
         final TextView homeTxt = findViewById(R.id.homeTxt);
         final TextView searchTxt = findViewById(R.id.searchTxt);
-//        final TextView historyTxt = findViewById(R.id.riwayatTxt);
+        final TextView historyTxt = findViewById(R.id.riwayatTxt);
         final TextView accountTxt = findViewById(R.id.accountTxt);
 
 
@@ -81,11 +82,14 @@ public class MainActivity extends AppCompatActivity {
 //                    unselect
                     searchTxt.setVisibility(View.GONE);
                     accountTxt.setVisibility(View.GONE);
+                    historyTxt.setVisibility(View.GONE);
 
                     searchImage.setImageResource(R.drawable.search);
+                    historyImage.setImageResource(R.drawable.history);
                     accountImage.setImageResource(R.drawable.baseline_manage_accounts_24);
 
                     searchLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    historyLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     accountLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 //                    select home tab
                     homeTxt.setVisibility(View.VISIBLE);
@@ -115,12 +119,15 @@ public class MainActivity extends AppCompatActivity {
 //                    unselect
                     homeTxt.setVisibility(View.GONE);
                     accountTxt.setVisibility(View.GONE);
+                    historyTxt.setVisibility(View.GONE);
 
                     homeImage.setImageResource(R.drawable.home);
                     accountImage.setImageResource(R.drawable.baseline_manage_accounts_24);
+                    historyImage.setImageResource(R.drawable.history);
 
                     homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     accountLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    historyLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
 //                    select home tab
                     searchTxt.setVisibility(View.VISIBLE);
@@ -138,10 +145,47 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        accountLayout.setOnClickListener(new View.OnClickListener() {
+        historyLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedTab != 3) {
+//        sethome
+                    getSupportFragmentManager().beginTransaction()
+                            .setReorderingAllowed(true)
+                            .replace(R.id.fragmentContainer, HistoryFragment.class, null)
+                            .commit();
+//                    unselect
+                    homeTxt.setVisibility(View.GONE);
+                    accountTxt.setVisibility(View.GONE);
+                    searchTxt.setVisibility(View.GONE);
+
+                    homeImage.setImageResource(R.drawable.home);
+                    accountImage.setImageResource(R.drawable.baseline_manage_accounts_24);
+                    searchImage.setImageResource(R.drawable.search);
+
+                    homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    accountLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    searchLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+//                    select home tab
+                    historyTxt.setVisibility(View.VISIBLE);
+                    historyImage.setImageResource(R.drawable.history);
+                    historyLayout.setBackgroundResource(R.drawable.round_back_home_100);
+//                  create animation
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                    scaleAnimation.setDuration(200);
+                    scaleAnimation.setFillAfter(true);
+                    historyLayout.startAnimation(scaleAnimation);
+
+                    selectedTab = 3;
+                }
+            }
+        });
+
+
+        accountLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedTab != 4) {
 
                     //        sethome
                     getSupportFragmentManager().beginTransaction()
@@ -151,14 +195,17 @@ public class MainActivity extends AppCompatActivity {
 //                    unselect
                     homeTxt.setVisibility(View.GONE);
                     searchTxt.setVisibility(View.GONE);
+                    historyTxt.setVisibility(View.GONE);
 
 
                     homeImage.setImageResource(R.drawable.home);
                     searchImage.setImageResource(R.drawable.baseline_search_24);
+                    historyImage.setImageResource(R.drawable.history);
 
 
                     homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     searchLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    historyLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
 //                    select home tab
                     accountTxt.setVisibility(View.VISIBLE);
