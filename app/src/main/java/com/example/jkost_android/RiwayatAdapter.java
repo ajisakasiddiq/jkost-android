@@ -1,10 +1,9 @@
 package com.example.jkost_android;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import java.util.List;
 public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder> {
     private List<Transaksi> riwayatList;
 
-    public RiwayatAdapter(List<Transaksi> riwayatList) {
+    public RiwayatAdapter(Context context, List<Transaksi> riwayatList) {
         this.riwayatList = riwayatList;
     }
 

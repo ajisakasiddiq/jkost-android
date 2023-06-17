@@ -3,6 +3,8 @@ package com.example.jkost_android.ui.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.jkost_android.KostAdapter;
 import com.example.jkost_android.ModelClass;
 import com.example.jkost_android.R;
+import com.example.jkost_android.RiwayatAdapter;
 import com.example.jkost_android.ui.profile.Transaksi;
 import com.example.jkost_android.util.UtilApi;
 
@@ -43,11 +46,11 @@ public class HistoryFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String url = "http://"+ UtilApi.API_URL  + "/api/riwayat/3";
-
+    private RecyclerView recyclerView;
     private Transaksi transaksi;
-    private KostAdapter kamarAdapter;
-    private ArrayList<ModelClass> kamarList;
-    private ModelClass modelClass;
+    private RiwayatAdapter riwayatAdapter;
+    private ArrayList<Transaksi> transaksiList;
+
     public HistoryFragment() {
         // Required empty public constructor
     }
@@ -84,7 +87,12 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
-
+        recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        transaksiList = new ArrayList<Transaksi>();
+        riwayatAdapter = new RiwayatAdapter(getContext(), transaksiList);
+        recyclerView.setAdapter(riwayatAdapter);
         riwayat();
 
         return view;
@@ -103,13 +111,13 @@ public class HistoryFragment extends Fragment {
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonObject = jsonArray.getJSONObject(i);
-                                modelClass = new ModelClass();
-                                modelClass.setNamakost(jsonObject.getString("nama_kost"));
+                                transaksi = new Transaksi();
+                                transaksi.setNama_kost(jsonObject.getString("nama_kost"));
 //                        modelClass.getHarga(data.getString("harga"));
-                                HistoryFragment.this.kamarList.add(modelClass);
+                                HistoryFragment.this.transaksiList.add(transaksi);
                             }
 
-                            kamarAdapter.notifyDataSetChanged();
+                            riwayatAdapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
