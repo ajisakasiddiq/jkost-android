@@ -1,5 +1,6 @@
 package com.example.jkost_android.ui.fragment;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
