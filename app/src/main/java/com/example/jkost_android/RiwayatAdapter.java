@@ -16,9 +16,12 @@ import java.util.List;
 
 public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder> {
     private List<Transaksi> riwayatList;
-
+    private Context context;
+    private LayoutInflater layoutInflater;
     public RiwayatAdapter(Context context, List<Transaksi> riwayatList) {
         this.riwayatList = riwayatList;
+        this.context = context;
+        layoutInflater=LayoutInflater.from(context);
     }
 
     @NonNull
@@ -32,9 +35,10 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.RiwayatV
     public void onBindViewHolder(@NonNull RiwayatViewHolder holder, int position) {
         Transaksi item = riwayatList.get(position);
 
-        holder.name.setText(riwayatList.get(position).getNama_kost());
-
-
+        holder.name.setText(item.getNama_kost());
+        holder.harga.setText(item.getTotal_price());
+        holder.no_kamar.setText(item.getNo_kamar());
+        holder.status.setText(item.getStatus());
         // Setel informasi lainnya untuk item riwayat pemesanan
     }
 

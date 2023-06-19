@@ -1,7 +1,5 @@
 package com.example.jkost_android.ui.fragment;
 
-
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,8 +21,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.jkost_android.KostAdapter;
 import com.example.jkost_android.ModelClass;
 import com.example.jkost_android.R;
-import com.example.jkost_android.RiwayatAdapter;
-import com.example.jkost_android.ui.profile.Transaksi;
 import com.example.jkost_android.util.UtilApi;
 
 import org.json.JSONArray;
@@ -38,6 +35,14 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HistoryFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private KostAdapter kamarAdapter;
+    private ArrayList<ModelClass> kamarList;
+    private ModelClass modelClass;
+    private Button btnpesan;
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,12 +51,9 @@ public class HistoryFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
+
+    private String url = "http://"+ UtilApi.API_URL  + "/api/data";
     private String mParam2;
-    private String url = "http://"+ UtilApi.API_URL  + "/api/riwayat/3";
-    private RecyclerView recyclerView;
-    private Transaksi transaksi;
-    private RiwayatAdapter riwayatAdapter;
-    private ArrayList<Transaksi> transaksiList;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -63,11 +65,11 @@ public class HistoryFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HistoryFragment.
+     * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HistoryFragment newInstance(String param1, String param2) {
-        HistoryFragment fragment = new HistoryFragment();
+    public static HomeFragment newInstance(String param1, String param2) {
+        HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -87,21 +89,26 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
+
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        transaksiList = new ArrayList<Transaksi>();
-        riwayatAdapter = new RiwayatAdapter(getContext(), transaksiList);
-        recyclerView.setAdapter(riwayatAdapter);
-        riwayat();
+        kamarList = new ArrayList<ModelClass>();
+        kamarAdapter = new KostAdapter(getContext(), kamarList);
+        recyclerView.setAdapter(kamarAdapter);
 
+        loadKamarData();
+
+
+//        btnpesan = view.findViewById(R.id.btnPesan);
         return view;
     }
 
 
-    private void riwayat() {
+
+
+    private void loadKamarData() {
         // Ganti dengan URL endpoint API Anda
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -113,13 +120,13 @@ public class HistoryFragment extends Fragment {
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonObject = jsonArray.getJSONObject(i);
-                                transaksi = new Transaksi();
-                                transaksi.setNama_kost(jsonObject.getString("nama_kost"));
+                                modelClass = new ModelClass();
+                                modelClass.setNamakost(jsonObject.getString("nama_kost"));
 //                        modelClass.getHarga(data.getString("harga"));
-                                HistoryFragment.this.transaksiList.add(transaksi);
+                                HistoryFragment.this.kamarList.add(modelClass);
                             }
 
-                            riwayatAdapter.notifyDataSetChanged();
+                            kamarAdapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

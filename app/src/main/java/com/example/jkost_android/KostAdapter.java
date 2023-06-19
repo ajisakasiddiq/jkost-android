@@ -29,8 +29,6 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
     public KostAdapter(Context context, ArrayList<ModelClass> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
-//        this.arrayList = arrayList;
-//        this.listener = listener;
         layoutInflater=LayoutInflater.from(context);
     }
 

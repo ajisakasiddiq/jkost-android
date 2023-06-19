@@ -5,6 +5,7 @@ public class Transaksi {
 
     private int  id_kost, id_kamar, id_transaction, user_id, kamar_id, id, no_kamar, durasi_sewa, total_price, tgl_sewa;
 
+
     public String getNama_kost() {
         return nama_kost;
     }
