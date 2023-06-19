@@ -11,6 +11,14 @@ public class ModelClass {
 
     private String  id,nama_kost,no_kamar ,status,no, harga,deskripsi,alamat,imgpertama,imgkedua, imgketiga,imgkeempat;
 
+    public String getHarga() {
+        return harga;
+    }
+
+    public void setHarga(String harga) {
+        this.harga = harga;
+    }
+
     public String getNamakost() {
         return nama_kost;
     }
@@ -33,14 +41,6 @@ public class ModelClass {
 
     public String getNo() {
         return no;
-    }
-
-    public String getHarga(Integer harga) {
-        return this.harga;
-    }
-
-    public void setHarga(String harga) {
-        harga = harga;
     }
 
     public String getDeskripsi() {

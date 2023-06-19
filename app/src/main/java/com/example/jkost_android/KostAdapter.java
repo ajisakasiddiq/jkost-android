@@ -53,6 +53,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
 
             holder.kostName.setText(arrayList.get(position).getNamakost());
             holder.nokamar.setText(arrayList.get(position).getNo_kamar());
+            holder.kostNum.setText(arrayList.get(position).getHarga());
 //            holder.kostNum.setText(arrayList.get(position).getHarga());
             holder.kostStatus.setText(arrayList.get(position).getStatus());
 
