@@ -56,9 +56,15 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
             holder.kostNum.setText(arrayList.get(position).getHarga());
 //            holder.kostNum.setText(arrayList.get(position).getHarga());
             holder.kostStatus.setText(arrayList.get(position).getStatus());
+//if (item.getStatus() == "0"){
+//    holder.kostStatus.setText("Disewakan");
+//} else if (item.getStatus() == "1") {
+//    holder.kostStatus.setText("Tersedia");
+//}else {
+//    holder.kostStatus.setText("Data tidak valid");
+//}
 
-
-            holder.btnpesan.setOnClickListener(new View.OnClickListener() {
+        holder.btnpesan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 //                    Intent i = new Intent(context,DetailActivity.class);

@@ -125,6 +125,7 @@ public class HomeFragment extends Fragment {
                                 modelClass.setNamakost(jsonObject.getString("nama_kost"));
                                 modelClass.setHarga(jsonObject.getString("harga"));
                                 modelClass.setNo_kamar(jsonObject.getString("no_kamar"));
+//                                modelClass.setStatus(jsonObject.getString("status"));
                                 HomeFragment.this.kamarList.add(modelClass);
                             }
 
