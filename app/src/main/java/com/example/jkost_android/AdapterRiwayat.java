@@ -3,7 +3,6 @@ package com.example.jkost_android;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,44 +13,41 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.security.AccessController;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
+public class AdapterRiwayat extends RecyclerView.Adapter<AdapterRiwayat.MyHolder> {
 
 //    private final OnItemClickListener listener;
     Context context;
-    List<ModelClass> arrayList;
+    List<ClassModel> arrayList;
     LayoutInflater layoutInflater;
 
 //    , OnItemClickListener listener
-    public KostAdapter(Context context, ArrayList<ModelClass> arrayList) {
+    public AdapterRiwayat(Context context, ArrayList<ClassModel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
         layoutInflater=LayoutInflater.from(context);
     }
 
-
-
     public interface OnItemClickListener {
-        void onItemClick(ModelClass item);
+        void onItemClick(ClassModel item);
     }
 
 
 
     @NonNull
     @Override
-    public KostAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterRiwayat.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view=layoutInflater.inflate(R.layout.item_file,parent, false);
         return new MyHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KostAdapter.MyHolder holder, int position) {
-        ModelClass item = arrayList.get(position);
+    public void onBindViewHolder(@NonNull AdapterRiwayat.MyHolder holder, int position) {
+        ClassModel item = arrayList.get(position);
 
-            holder.kostName.setText(arrayList.get(position).getNamakost());
+            holder.kostName.setText(arrayList.get(position).getNama_kost());
             holder.nokamar.setText(arrayList.get(position).getNo_kamar());
 //            holder.kostNum.setText(arrayList.get(position).getHarga());
             holder.kostStatus.setText(arrayList.get(position).getStatus());
@@ -88,7 +84,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.MyHolder> {
         return arrayList.size();
     }
 
-    public ModelClass getItem(int position) {
+    public ClassModel getItem(int position) {
         return arrayList.get(position);
     }
 

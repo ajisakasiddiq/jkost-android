@@ -18,9 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.jkost_android.KostAdapter;
+import com.example.jkost_android.AdapterRiwayat;
+import com.example.jkost_android.ClassModel;
 import com.example.jkost_android.ModelClass;
 import com.example.jkost_android.R;
+import com.example.jkost_android.RiwayatAdapter;
 import com.example.jkost_android.util.UtilApi;
 
 import org.json.JSONArray;
@@ -36,9 +38,9 @@ import java.util.ArrayList;
  */
 public class HistoryFragment extends Fragment {
     private RecyclerView recyclerView;
-    private KostAdapter kamarAdapter;
-    private ArrayList<ModelClass> kamarList;
-    private ModelClass modelClass;
+    private AdapterRiwayat kamarAdapter;
+    private ArrayList<ClassModel> arrayList;
+    private ClassModel modelClass;
     private Button btnpesan;
 
 
@@ -52,7 +54,7 @@ public class HistoryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
 
-    private String url = "http://"+ UtilApi.API_URL  + "/api/data";
+    private String url = "http://"+ UtilApi.API_URL  + "/api/riwayat/2";
     private String mParam2;
 
     public HistoryFragment() {
@@ -94,8 +96,8 @@ public class HistoryFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        kamarList = new ArrayList<ModelClass>();
-        kamarAdapter = new KostAdapter(getContext(), kamarList);
+        arrayList = new ArrayList<ClassModel>();
+        kamarAdapter = new AdapterRiwayat(getContext(), arrayList);
         recyclerView.setAdapter(kamarAdapter);
 
         loadKamarData();
@@ -120,10 +122,10 @@ public class HistoryFragment extends Fragment {
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonObject = jsonArray.getJSONObject(i);
-                                modelClass = new ModelClass();
-                                modelClass.setNamakost(jsonObject.getString("nama_kost"));
+                                modelClass = new ClassModel();
+                                modelClass.setNama_kost(jsonObject.getString("nama_kost"));
 //                        modelClass.getHarga(data.getString("harga"));
-                                HistoryFragment.this.kamarList.add(modelClass);
+                                HistoryFragment.this.arrayList.add(modelClass);
                             }
 
                             kamarAdapter.notifyDataSetChanged();
