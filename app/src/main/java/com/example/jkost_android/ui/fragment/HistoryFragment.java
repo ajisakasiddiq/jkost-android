@@ -20,9 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.jkost_android.AdapterRiwayat;
 import com.example.jkost_android.ClassModel;
-import com.example.jkost_android.ModelClass;
 import com.example.jkost_android.R;
-import com.example.jkost_android.RiwayatAdapter;
 import com.example.jkost_android.util.UtilApi;
 
 import org.json.JSONArray;
@@ -124,6 +122,9 @@ public class HistoryFragment extends Fragment {
                                 jsonObject = jsonArray.getJSONObject(i);
                                 modelClass = new ClassModel();
                                 modelClass.setNama_kost(jsonObject.getString("nama_kost"));
+                                modelClass.setStatus(jsonObject.getString("status"));
+                                modelClass.setTotal_price(jsonObject.getString("total_price"));
+                                modelClass.setNo_kamar(jsonObject.getString("no_kamar"));
 //                        modelClass.getHarga(data.getString("harga"));
                                 HistoryFragment.this.arrayList.add(modelClass);
                             }

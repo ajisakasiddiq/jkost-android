@@ -10,8 +10,11 @@
     android:padding="3dp">
 
     <RelativeLayout
+        android:id="@+id/item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:onClick="onItemClick">
 
         <ImageView
             android:id="@+id/img"
@@ -64,7 +67,7 @@
 
         <TextView
             android:id="@+id/harga"
-            android:layout_width="288dp"
+            android:layout_width="204dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
             android:layout_marginLeft="10dp"
@@ -77,7 +80,7 @@
 
         <TextView
             android:id="@+id/status"
-            android:layout_width="288dp"
+            android:layout_width="204dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/harga"
             android:layout_marginLeft="10dp"
@@ -85,9 +88,11 @@
             android:layout_toRightOf="@+id/img"
             android:singleLine="true"
             android:text="Tersedia"
-            android:textColorHint="@color/green"
             android:textColor="@color/black"
+            android:textColorHint="@color/green"
             android:textSize="15dp" />
+
+
 
     </RelativeLayout>
 

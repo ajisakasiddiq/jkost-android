@@ -39,7 +39,7 @@ public class AdapterRiwayat extends RecyclerView.Adapter<AdapterRiwayat.MyHolder
     @NonNull
     @Override
     public AdapterRiwayat.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=layoutInflater.inflate(R.layout.item_file,parent, false);
+        View view=layoutInflater.inflate(R.layout.activity_riwayat_adapter,parent, false);
         return new MyHolder(view);
     }
 
@@ -49,34 +49,11 @@ public class AdapterRiwayat extends RecyclerView.Adapter<AdapterRiwayat.MyHolder
 
             holder.kostName.setText(arrayList.get(position).getNama_kost());
             holder.nokamar.setText(arrayList.get(position).getNo_kamar());
+            holder.kostNum.setText(arrayList.get(position).getTotal_price());
+            holder.nokamar.setText(arrayList.get(position).getNo_kamar());
 //            holder.kostNum.setText(arrayList.get(position).getHarga());
             holder.kostStatus.setText(arrayList.get(position).getStatus());
 
-
-            holder.btnpesan.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-//                    Intent i = new Intent(context,DetailActivity.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("nokamar");
-
-
-                    // Mendapatkan ID kamar
-                    String roomId = item.getId();
-
-
-                    // Menyimpan ID kamar ke SharedPreferences
-//                    AccessController view;
-                    SharedPreferences sharedPreferences = view.getContext().getSharedPreferences("idkamar", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("id_kamar", roomId);
-                    editor.apply();
-
-                    // Buka halaman detail
-                    Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                    view.getContext().startActivity(intent);
-                }
-            });
     }
 
     @Override
@@ -93,7 +70,7 @@ public class AdapterRiwayat extends RecyclerView.Adapter<AdapterRiwayat.MyHolder
         TextView kostName, kostNum,kostStatus,nokamar,id;
         ImageView img;
 
-        Button btnpesan;
+
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             kostName=itemView.findViewById(R.id.name);
@@ -101,7 +78,6 @@ public class AdapterRiwayat extends RecyclerView.Adapter<AdapterRiwayat.MyHolder
             kostStatus=itemView.findViewById(R.id.status);
             img=itemView.findViewById(R.id.img);
             nokamar=itemView.findViewById(R.id.no_kamar);
-            btnpesan =itemView.findViewById(R.id.btnPesan);
         }
     }
 }
