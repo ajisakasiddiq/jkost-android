@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity2">
+    tools:context=".ui.fragment.SearchFragment">
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,17 +15,23 @@
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp">
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="301dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:inputType="text"
-            app:queryHint="Nama Kost"/>
-    </androidx.cardview.widget.CardView>
+            android:hint="Cari..." />
+
+        <Button
+            android:id="@+id/buttonSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            android:text="Cari" />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView"
+        android:id="@+id/recycleview"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
