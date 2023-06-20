@@ -1,5 +1,7 @@
 package com.example.jkost_android.ui.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -52,7 +54,7 @@ public class HistoryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
 
-    private String url = "http://"+ UtilApi.API_URL  + "/api/riwayat/2";
+
     private String mParam2;
 
     public HistoryFragment() {
@@ -110,7 +112,12 @@ public class HistoryFragment extends Fragment {
 
     private void loadKamarData() {
         // Ganti dengan URL endpoint API Anda
-
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+        String userId = sharedPreferences.getString("Id", ""); // Mendapatkan ID pengguna
+        String username = sharedPreferences.getString("username", ""); // Mendapatkan nama pengguna
+        String email = sharedPreferences.getString("email", "");
+        String name = sharedPreferences.getString("name", "");
+        String url = "http://"+ UtilApi.API_URL  + "/api/riwayat/"  + userId;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
