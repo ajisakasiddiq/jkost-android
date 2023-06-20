@@ -182,12 +182,12 @@ public class TransaksiActivity extends Activity {
 //                params.put("total_price", total);
 //                params.put("tgl_sewa", tglpesan);
 
-                params.put("user_id", "3");
-                params.put("kamar_id", "1");
-                params.put("nama_pemesan", "ss");
-                params.put("durasi_sewa", "2");
-                params.put("total_price", "450000");
-                params.put("tgl_sewa", "2023-06-12");
+                params.put("user_id", userid);
+                params.put("kamar_id", kamarid);
+                params.put("nama_pemesan", namapemesan);
+                params.put("durasi_sewa", durasi);
+                params.put("total_price", total);
+                params.put("tgl_sewa", tglpesan);
                 return params;
             }
         };
