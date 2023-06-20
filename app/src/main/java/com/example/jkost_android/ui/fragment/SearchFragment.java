@@ -104,7 +104,6 @@ public class SearchFragment extends Fragment {
         recyclerView.setAdapter(kamarAdapter);
         editTextSearch = view.findViewById(R.id.editTextSearch);
         buttonSearch = view.findViewById(R.id.buttonSearch);
-
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,8 +111,8 @@ public class SearchFragment extends Fragment {
             }
         });
 
-
         return view;
+
     }
 
 

@@ -1,9 +1,12 @@
 package com.example.jkost_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +53,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView textViewStatusKamar;
     private TextView textViewNamaKost;
     private TextView textViewAlamat;
+    private Button btnpesan;
     private TextView textViewDeskripsiKost,textViewNoKamar;
 
     public DetailActivity() {
@@ -67,11 +71,21 @@ public class DetailActivity extends AppCompatActivity {
         textViewNamaKost = findViewById(R.id.textViewNamaKost);
         textViewAlamat = findViewById(R.id.textViewAlamat);
         textViewDeskripsiKost = findViewById(R.id.textViewDeskripsiKost);
+        btnpesan = findViewById(R.id.button);
 
         SliderAdapter adapter = new SliderAdapter(this, imageList);
         viewPager.setAdapter(adapter);
 
         loaddetails();
+
+        btnpesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailActivity.this, TransaksiActivity.class);
+                DetailActivity.this.startActivity(intent);
+            }
+        });
+
     }
 
 

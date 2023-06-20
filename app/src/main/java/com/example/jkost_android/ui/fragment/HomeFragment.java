@@ -1,5 +1,6 @@
 package com.example.jkost_android.ui.fragment;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.jkost_android.DetailActivity;
 import com.example.jkost_android.KostAdapter;
 import com.example.jkost_android.ModelClass;
 import com.example.jkost_android.R;
@@ -100,6 +103,8 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(kamarAdapter);
 
         loadKamarData();
+// Mendapatkan ID produk saat item diklik
+
 
 
 //        btnpesan = view.findViewById(R.id.btnPesan);

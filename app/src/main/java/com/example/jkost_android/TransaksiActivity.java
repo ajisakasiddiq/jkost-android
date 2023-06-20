@@ -63,7 +63,7 @@ public class TransaksiActivity extends Activity {
         String userId = sharedPreferences.getString("Id", "");
         editTextUserId = findViewById(R.id.user_id);
         editTextUserId.setText(userId);
-//        editTextUserId.setVisibility(View.GONE);
+        editTextUserId.setVisibility(View.GONE);
         editTextKamarId = findViewById(R.id.kamar_id);
         editTextNamePesan = findViewById(R.id.nama_pemesan);
         editTextTotal = findViewById(R.id.total_price);
