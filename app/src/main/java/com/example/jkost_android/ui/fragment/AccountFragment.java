@@ -1,5 +1,7 @@
 package com.example.jkost_android.ui.fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jkost_android.EditProfileActivity;
 import com.example.jkost_android.R;
+import com.example.jkost_android.ui.auth.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,8 +82,14 @@ public class AccountFragment extends Fragment {
         TextView textViewEmail = view.findViewById(R.id.profileEmail);
         TextView textViewName = view.findViewById(R.id.profileName);
         TextView textViewnUserName = view.findViewById(R.id.profileUsername);
+        ImageView btnlogout = view.findViewById(R.id.logout);
 
-
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +99,7 @@ public class AccountFragment extends Fragment {
             }
         });
         // Mengakses SharedPreferences untuk mendapatkan data pengguna yang login
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
         String userId = sharedPreferences.getString("userId", ""); // Mendapatkan ID pengguna
         String username = sharedPreferences.getString("username", ""); // Mendapatkan nama pengguna
         String email = sharedPreferences.getString("email", "");
@@ -102,6 +112,18 @@ public class AccountFragment extends Fragment {
         textViewName.setText("name: " +name);
         textViewname.setText("name: " +name);
         return view;
+    }
+
+    private void logout() {
+        // Hapus data pengguna yang diingat
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        // Setelah logout, pindahkan pengguna ke halaman login
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }
 
